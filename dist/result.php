@@ -2,7 +2,6 @@
 session_start();
 include_once "adminheader.php";
 ?>
-
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="card">
@@ -18,7 +17,6 @@ require "razorflow_php/razorflow.php";
 
 $id = $_SESSION["id"];
 $waardes = new Waardes($DB_con, $id);
-
 
 
 class Soil extends StandaloneDashboard {
@@ -60,13 +58,64 @@ $db->enableDevTools ();
 $db->renderStandalone();
 
 ?>
+                                <hr>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <a class="card card-banner card-blue-light">
+                                            <div class="card-body">
+                                                <i class="icon fa fa-tint fa-4x"></i>
+                                                <div class="content">
+                                                    <div class="title">Moisture</div>
+                                                    <div class="value"></span><?php echo $waardes->getMoisture();?> %</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <a class="card card-banner card-yellow-light">
+                                        <div class="card-body">
+                                            <i class="icon fa fa-thermometer-half fa-4x"></i>
+                                            <div class="content">
+                                                <div class="title">Temperature</div>
+                                                <div class="value"></span><?php echo $waardes->getTemperature();?>  ℃</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
 
 </div>
                         </div>
                     </div>
                 </div>
         </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                Location
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="map"></div>
+                        <script>
+                            function initMap() {
+                                var uluru = {lat: 52.4407972, lng: 4.6547483};
+                                var map = new google.maps.Map(document.getElementById('map'), {
+                                    zoom: 14,
+                                    center: uluru
+                                });
+                                var marker = new google.maps.Marker({
+                                    position: uluru,
+                                    map: map
+                                });
+                            }
+                        </script>
     </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
 
 <?php
 include_once "footer.php";

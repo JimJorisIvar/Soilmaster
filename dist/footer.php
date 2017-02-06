@@ -14,6 +14,8 @@
 
 <script type="text/javascript" src="./assets/js/vendor.js"></script>
 <script type="text/javascript" src="./assets/js/app.js"></script>
-
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUwaO19x9f0FIwv7mbv5YwJlCQYwk42P8&callback=initMap">
+</script>
 </body>
 </html>

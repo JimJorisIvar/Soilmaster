@@ -19,7 +19,7 @@ require "razorflow_php/razorflow.php";
 $id = $_SESSION["id"];
 $waardes = new Waardes($DB_con, $id);
 
-
+echo $waardes->getMoisture();
 
 class Soil extends StandaloneDashboard {
 

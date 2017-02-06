@@ -22,7 +22,6 @@ include_once "connection.php";
 </head>
 <body>
 <div class="app app-default">
-
     <aside class="app-sidebar" id="sidebar">
         <div class="sidebar-header">
             <a class="sidebar-brand" href="#"><span class="highlight">Soilmaster</span> Admin</a>

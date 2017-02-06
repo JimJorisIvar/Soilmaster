@@ -12,7 +12,7 @@ include_once "adminheader.php";
         <ul class="card-action">
           <li>
             <a href="/">
-                <i class="fa fa-refresh"></i>
+              <i class="fa fa-refresh"></i>
             </a>
           </li>
         </ul>

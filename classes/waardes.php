@@ -164,6 +164,7 @@ class Waardes
             $stmt->execute();
             while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $this->waardes_info = $result;
+                $this->scanID = $result['scanID'];
                 $this->location = $result['locatie'];
                 $this->temperature = $result['temperatuur'];
                 $this->moisture = $result['vochtigheid'];
@@ -256,11 +257,11 @@ class Waardes
     }
 
     /**
-     * @param $scanid
+     * @param $scanID
      */
-    public function setScanid($scanid)
+    public function setScanid($scanID)
     {
-        $this->scanID = htmlentities($scanid);
+        $this->scanID = htmlentities($scanID);
     }
 
     /**

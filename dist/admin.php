@@ -1,5 +1,9 @@
 <?php
 include_once "adminheader.php";
+$waardes = new Waardes($DB_con);
+$laatsteidscan = $waardes->getLastinsertedid();
+$_SESSION['scan_id'] = $laatsteidscan;
+echo $waardes->getLastinsertedid();
 ?>
 
 <div class="row">
@@ -7,7 +11,7 @@ include_once "adminheader.php";
     <div class="card card-banner card-chart card-green no-br">
       <div class="card-header">
         <div class="card-title">
-          <div class="title">Most Recent scan</div>
+          <div class="title"><?php echo $waardes->getLastinsertedid(); ?>Most Recent scan</div>
         </div>
         <ul class="card-action">
           <li>
@@ -42,7 +46,7 @@ include_once "adminheader.php";
     <i class="icon fa fa-wifi fa-4x"></i>
     <div class="content">
       <div class="title">Total scans</div>
-      <div class="value"><span class="sign"></span>253</div>
+      <div class="value"><span class="sign"></span><?php $waardes = new Waardes($DB_con, 13); echo $waardes->getScanid(); ?></div>
     </div>
   </div>
 </a>
@@ -116,59 +120,59 @@ include_once "adminheader.php";
     </div>
   </div>
 
-  <!--<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">-->
-    <!--<div class="card card-tab card-mini">-->
-      <!--<div class="card-header">-->
-        <!--<ul class="nav nav-tabs tab-stats">-->
-          <!--<li role="tab1" class="active">-->
-            <!--<a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">Browsers</a>-->
-          <!--</li>-->
-          <!--<li role="tab2">-->
-            <!--<a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">OS</a>-->
-          <!--</li>-->
-          <!--<li role="tab2">-->
-            <!--<a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">More</a>-->
-          <!--</li>-->
-        <!--</ul>-->
-      <!--</div>-->
-      <!--<div class="card-body tab-content">-->
-        <!--<div role="tabpanel" class="tab-pane active" id="tab1">-->
-          <!--<div class="row">-->
-            <!--<div class="col-sm-8">-->
-              <!--<div class="chart ct-chart-browser ct-perfect-fourth"></div>-->
-            <!--</div>-->
-            <!--<div class="col-sm-4">-->
-              <!--<ul class="chart-label">-->
-                <!--<li class="ct-label ct-series-a">Google Chrome</li>-->
-                <!--<li class="ct-label ct-series-b">Firefox</li>-->
-                <!--<li class="ct-label ct-series-c">Safari</li>-->
-                <!--<li class="ct-label ct-series-d">IE</li>-->
-                <!--<li class="ct-label ct-series-e">Opera</li>-->
-              <!--</ul>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div role="tabpanel" class="tab-pane" id="tab2">-->
-          <!--<div class="row">-->
-            <!--<div class="col-sm-8">-->
-              <!--<div class="chart ct-chart-os ct-perfect-fourth"></div>-->
-            <!--</div>-->
-            <!--<div class="col-sm-4">-->
-              <!--<ul class="chart-label">-->
-                <!--<li class="ct-label ct-series-a">iOS</li>-->
-                <!--<li class="ct-label ct-series-b">Android</li>-->
-                <!--<li class="ct-label ct-series-c">Windows</li>-->
-                <!--<li class="ct-label ct-series-d">OSX</li>-->
-                <!--<li class="ct-label ct-series-e">Linux</li>-->
-              <!--</ul>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div role="tabpanel" class="tab-pane" id="tab3">-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
+  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <div class="card card-tab card-mini">
+      <div class="card-header">
+        <ul class="nav nav-tabs tab-stats">
+          <li role="tab1" class="active">
+            <a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">Browsers</a>
+          </li>
+          <li role="tab2">
+            <a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">OS</a>
+          </li>
+          <li role="tab2">
+            <a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">More</a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body tab-content">
+        <div role="tabpanel" class="tab-pane active" id="tab1">
+          <div class="row">
+            <div class="col-sm-8">
+              <div class="chart ct-chart-browser ct-perfect-fourth"></div>
+            </div>
+            <div class="col-sm-4">
+              <ul class="chart-label">
+                <li class="ct-label ct-series-a">Google Chrome</li>
+                <li class="ct-label ct-series-b">Firefox</li>
+                <li class="ct-label ct-series-c">Safari</li>
+                <li class="ct-label ct-series-d">IE</li>
+                <li class="ct-label ct-series-e">Opera</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="tab2">
+          <div class="row">
+            <div class="col-sm-8">
+              <div class="chart ct-chart-os ct-perfect-fourth"></div>
+            </div>
+            <div class="col-sm-4">
+              <ul class="chart-label">
+                <li class="ct-label ct-series-a">iOS</li>
+                <li class="ct-label ct-series-b">Android</li>
+                <li class="ct-label ct-series-c">Windows</li>
+                <li class="ct-label ct-series-d">OSX</li>
+                <li class="ct-label ct-series-e">Linux</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="tab3">
+        </div>
+      </div>
+    </div>
+  </div>
 <?php
 include_once "footer.php";
 ?>

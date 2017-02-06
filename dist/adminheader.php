@@ -18,8 +18,14 @@ include_once "connection.php";
     <link rel="stylesheet" type="text/css" href="./assets/css/theme/blue.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/theme/red.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/theme/yellow.css">
-
+    <script src="https://use.fontawesome.com/d213b1b51c.js"></script>
 </head>
+<style>
+    #map {
+        height: 400px;
+        width: 100%;
+    }
+</style>
 <body>
 <div class="app app-default">
 
@@ -80,16 +86,7 @@ include_once "connection.php";
                 </li>
             </ul>
         </div>
-        <div class="sidebar-footer">
-            <ul class="menu">
-                <li>
-                    <a href="/" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-cogs" aria-hidden="true"></i>
-                    </a>
-                </li>
-                <li><a href="#"><span class="flag-icon flag-icon-th flag-icon-squared"></span></a></li>
-            </ul>
-        </div>
+
     </aside>
 
     <script type="text/ng-template" id="sidebar-dropdown.tpl.html">

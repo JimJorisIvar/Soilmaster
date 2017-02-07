@@ -1,5 +1,5 @@
 <?php
-include_once "../classes/waardes.php";
+include_once "../classes/Waardes.php";
 include_once "connection.php";
 include_once "../interfaces/CRUD.php";
 session_start();
@@ -19,7 +19,7 @@ $waardes->create();
 
 $_SESSION["id"] = $waardes->getLastinsertedid();
 
-header('Location: result.php');
+header('Location: results_table.php');
 
 
 ?>

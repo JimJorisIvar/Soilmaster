@@ -1,5 +1,5 @@
 <?php
-include_once "../classes/waardes.php";
+include_once "../classes/Waardes.php";
 include_once "connection.php";
 ?>
 
@@ -38,7 +38,7 @@ include_once "connection.php";
         <div class="sidebar-menu">
             <ul class="sidebar-nav">
                 <li class="active">
-                    <a href="admin.php">
+                    <a href="index.php">
                         <div class="icon">
                             <i class="fa fa-tasks" aria-hidden="true"></i>
                         </div>
@@ -46,11 +46,11 @@ include_once "connection.php";
                     </a>
                 </li>
                 <li class="active">
-                    <a href="./result.php">
+                    <a href="results_table.php">
                         <div class="icon">
-                            <i class="fa fa-signal" aria-hidden="true"></i>
+                            <i class="fa fa-bar-chart" aria-hidden="true"></i>
                         </div>
-                        <div class="title">Result</div>
+                        <div class="title">Results</div>
                     </a>
                 </li>
                 <li class="active">
@@ -221,7 +221,7 @@ include_once "connection.php";
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="start.php?logout">Logout</a>
+                                        <a href="index.php?logout">Logout</a>
                                     </li>
                                 </ul>
                             </div>

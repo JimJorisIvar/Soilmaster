@@ -111,9 +111,8 @@ class Waardes
     public function create()
     {
         try {
-            $stmt = $this->db->prepare("INSERT INTO waardes(datum, locatie, temperatuur, vochtigheid, naamScan, antimoonPpm,arseenPpm,bariumPpm,cadmiumPpm, chroomPpm, cobaltPpm, koperPpm, kwikPpm, loodPpm, molybeenPpm, nikkelPpm, zinkPpm)
-                                    VALUES(:datu :loca, :temp, :mois, :sname, :antppm, :arsppm, :barppm, :cadppm, :chrppm, :cobppm, :kopppm, :kwippm, :looppm, :molppm, :nikppm, :zinppm)");
-            $stmt->bindParam(":datu", $this->date);
+            $stmt = $this->db->prepare("INSERT INTO waardes(locatie, temperatuur, vochtigheid, naamScan, antimoonPpm,arseenPpm,bariumPpm,cadmiumPpm, chroomPpm, cobaltPpm, koperPpm, kwikPpm, loodPpm, molybeenPpm, nikkelPpm, zinkPpm)
+                                    VALUES(:loca, :temp, :mois, :sname, :antppm, :arsppm, :barppm, :cadppm, :chrppm, :cobppm, :kopppm, :kwippm, :looppm, :molppm, :nikppm, :zinppm)");
             $stmt->bindParam(":loca", $this->location);
             $stmt->bindParam(":temp", $this->temperature);
             $stmt->bindParam(":mois", $this->moisture);

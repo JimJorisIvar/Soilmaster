@@ -38,7 +38,7 @@ include_once "connection.php";
         <div class="sidebar-menu">
             <ul class="sidebar-nav">
                 <li class="active">
-                    <a href="index.php">
+                    <a href="index">
                         <div class="icon">
                             <i class="fa fa-tasks" aria-hidden="true"></i>
                         </div>
@@ -46,7 +46,7 @@ include_once "connection.php";
                     </a>
                 </li>
                 <li class="active">
-                    <a href="results_table.php">
+                    <a href="results_table">
                         <div class="icon">
                             <i class="fa fa-bar-chart" aria-hidden="true"></i>
                         </div>
@@ -54,7 +54,7 @@ include_once "connection.php";
                     </a>
                 </li>
                 <li class="active">
-                    <a href="./input.php">
+                    <a href="input">
                         <div class="icon">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </div>

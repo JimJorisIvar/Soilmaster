@@ -1,6 +1,8 @@
 <?php
-session_start();
-include_once "adminheader.php";
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+include_once "adminHeader.php";
 ?>
     <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -15,8 +17,8 @@ include_once "adminheader.php";
 
                         require "razorflow_php/razorflow.php";
 
-                        $id = $_SESSION["id"];
-                        $waardes = new Waardes($DB_con, $id);
+                        $sendid = $_SESSION["selectedscan"];
+                        $waardes = new Waardes($DB_con, $sendid);
 
 
                         class Soil extends StandaloneDashboard

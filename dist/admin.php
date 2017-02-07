@@ -1,5 +1,5 @@
 <?php
-include_once "adminheader.php";
+include_once "adminHeader.php";
 $waardes = new Waardes($DB_con);
 $laatsteidscan = $waardes->getLastinsertedid();
 $_SESSION['scan_id'] = $laatsteidscan;

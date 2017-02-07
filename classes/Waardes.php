@@ -16,6 +16,10 @@ class Waardes
     /**
      * @var string
      */
+    private $date;
+    /**
+     * @var string
+     */
     private $location;
     /**
      * @var string
@@ -107,8 +111,9 @@ class Waardes
     public function create()
     {
         try {
-            $stmt = $this->db->prepare("INSERT INTO waardes(locatie, temperatuur, vochtigheid, naamScan, antimoonPpm,arseenPpm,bariumPpm,cadmiumPpm, chroomPpm, cobaltPpm, koperPpm, kwikPpm, loodPpm, molybeenPpm, nikkelPpm, zinkPpm)
-                                    VALUES(:loca, :temp, :mois, :sname, :antppm, :arsppm, :barppm, :cadppm, :chrppm, :cobppm, :kopppm, :kwippm, :looppm, :molppm, :nikppm, :zinppm)");
+            $stmt = $this->db->prepare("INSERT INTO waardes(datum, locatie, temperatuur, vochtigheid, naamScan, antimoonPpm,arseenPpm,bariumPpm,cadmiumPpm, chroomPpm, cobaltPpm, koperPpm, kwikPpm, loodPpm, molybeenPpm, nikkelPpm, zinkPpm)
+                                    VALUES(:datu :loca, :temp, :mois, :sname, :antppm, :arsppm, :barppm, :cadppm, :chrppm, :cobppm, :kopppm, :kwippm, :looppm, :molppm, :nikppm, :zinppm)");
+            $stmt->bindParam(":datu", $this->date);
             $stmt->bindParam(":loca", $this->location);
             $stmt->bindParam(":temp", $this->temperature);
             $stmt->bindParam(":mois", $this->moisture);
@@ -165,6 +170,7 @@ class Waardes
             while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $this->waardes_info = $result;
                 $this->scanID = $result['scanID'];
+                $this->date = $result['datum'];
                 $this->location = $result['locatie'];
                 $this->temperature = $result['temperatuur'];
                 $this->moisture = $result['vochtigheid'];
@@ -270,6 +276,14 @@ class Waardes
     public function getLocation()
     {
         return $this->location;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 
     /**

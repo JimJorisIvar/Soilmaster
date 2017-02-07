@@ -17,8 +17,6 @@ $waardes->setCadmiumPpm(htmlspecialchars($_POST['cadmium']));
 $waardes->create();
 
 
-$_SESSION["id"] = $waardes->getLastinsertedid();
-
 header('Location: results_table.php');
 
 

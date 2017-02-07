@@ -221,9 +221,7 @@ include_once "connection.php";
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
-                                            Logout
-                                        </a>
+                                        <a href="start.php?logout">Logout</a>
                                     </li>
                                 </ul>
                             </div>

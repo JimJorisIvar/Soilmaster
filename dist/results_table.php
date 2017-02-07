@@ -50,7 +50,7 @@ include_once "footer.php";
         'id': id
         };
 
-        var url = "setSelected.php";
+        var url = "setSelected";
 
         $.ajax({
         type: "POST",
@@ -62,7 +62,7 @@ include_once "footer.php";
         }
 
         });
-            window.location.href='result_graph.php';
+            window.location.href='result_graph';
         });
 </script>
 

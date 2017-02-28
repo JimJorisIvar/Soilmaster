@@ -21,8 +21,16 @@ include_once "connection.php";
     <script src="https://use.fontawesome.com/d213b1b51c.js"></script>
 </head>
 <style>
-    #map {
-        height: 400px;
+    .map_map {
+        height: 800px;
+        width: 100%;
+    }
+    .map_dashboard {
+        height: 300px;
+        width: 100%;
+    }
+    .map_result {
+        height: 525px;
         width: 100%;
     }
 </style>
@@ -43,6 +51,14 @@ include_once "connection.php";
                             <i class="fa fa-tasks" aria-hidden="true"></i>
                         </div>
                         <div class="title">Dashboard</div>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="map">
+                        <div class="icon">
+                            <i class="fa fa-map" aria-hidden="true"></i>
+                        </div>
+                        <div class="title">Map</div>
                     </a>
                 </li>
                 <li class="active">
@@ -230,19 +246,3 @@ include_once "connection.php";
                 </div>
             </div>
         </nav>
-
-        <div class="btn-floating" id="help-actions">
-            <div class="btn-bg"></div>
-            <button type="button" class="btn btn-default btn-toggle" data-toggle="toggle" data-target="#help-actions">
-                <i class="icon fa fa-plus"></i>
-                <span class="help-text">Shortcut</span>
-            </button>
-            <div class="toggle-content">
-                <ul class="actions">
-                    <li><a href="#">Website</a></li>
-                    <li><a href="#">Documentation</a></li>
-                    <li><a href="#">Issues</a></li>
-                    <li><a href="#">About</a></li>
-                </ul>
-            </div>
-        </div>

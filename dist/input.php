@@ -11,10 +11,10 @@ include_once "adminHeader.php";
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <input name="antimoon" type="text" class="form-control" placeholder="Antimoon">
-                                <input name="arseen" type="text" class="form-control" placeholder="Arseen">
-                                <input name="barium" type="text" class="form-control" placeholder="Barium">
-                                <input name="cadmium" type="text" class="form-control" placeholder="Cadmium">
+                                <input name="lood" type="text" class="form-control" placeholder="Lood">
+                                <input name="koper" type="text" class="form-control" placeholder="Koper">
+                                <input name="zink" type="text" class="form-control" placeholder="Zink">
+                                <input name="kwik" type="text" class="form-control" placeholder="Kwik">
                                 <input name="" type="text" class="form-control" placeholder="">
                                 <input name="" type="text" class="form-control" placeholder="">
                                 <input name="" type="text" class="form-control" placeholder="">

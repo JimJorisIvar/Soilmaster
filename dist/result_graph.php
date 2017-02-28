@@ -37,10 +37,10 @@ include_once "adminHeader.php";
                                 $chart = new ChartComponent("sales_chart");
                                 $chart->setCaption("");
                                 $chart->setDimensions(12, 8);
-                                $chart->setLabels(array("Antimoon", "Arseen", "Barium", "Cadmium"));
+                                $chart->setLabels(array("Lood", "Koper", "Zink", "Kwik"));
                                 $chart->addSeries("Maximaal toegestaan", "Maximaal toegestaan", array(40, 30, 50, 20), array(
                                     "seriesColor" => "#0077ff"));
-                                $chart->addSeries("Meting", "Meting", array($waardes->getAntimoonPpm(), $waardes->getArseenPpm(), $waardes->getBariumPpm(), $waardes->getCadmiumPpm()),
+                                $chart->addSeries("Meting", "Meting", array($waardes->getLoodPpm(), $waardes->getKoperPpm(), $waardes->getZinkPpm(), $waardes->getKwikPpm()),
                                     $kleur);
                                 $chart->setYAxis('PPM', array("numberPrefix" => '', "numberHumanize" => true));
                                 $this->addComponent($chart);
@@ -96,12 +96,16 @@ include_once "adminHeader.php";
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <div id="map"></div>
+                        <div id="map" class="map_result"></div>
                         <script>
+                            <?php
+                            $loca = $waardes->getLocation();
+                            sscanf("($loca)", "(%f, %f)", $lat, $lng);
+                            ?>
                             function initMap() {
-                                var uluru = {lat: 52.4407972, lng: 4.6547483};
+                                var uluru = {lat: <?php echo $lat; ?>, lng: <?php echo $lng; ?>};
                                 var map = new google.maps.Map(document.getElementById('map'), {
-                                    zoom: 14,
+                                    zoom: 15,
                                     center: uluru
                                 });
                                 var marker = new google.maps.Marker({

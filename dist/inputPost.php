@@ -9,15 +9,13 @@ $waardes->setScanName(htmlspecialchars($_POST['scanname']));
 $waardes->setLocation(htmlspecialchars($_POST['location']));
 $waardes->setTemperature(htmlspecialchars($_POST['temperature']));
 $waardes->setMoisture(htmlspecialchars($_POST['moisture']));
-$waardes->setAntimoonPpm(htmlspecialchars($_POST['antimoon']));
-$waardes->setArseenPpm(htmlspecialchars($_POST['arseen']));
-$waardes->setBariumPpm(htmlspecialchars($_POST['barium']));
-$waardes->setCadmiumPpm(htmlspecialchars($_POST['cadmium']));
+$waardes->setLoodPpm(htmlspecialchars($_POST['lood']));
+$waardes->setKoperPpm(htmlspecialchars($_POST['koper']));
+$waardes->setZinkPpm(htmlspecialchars($_POST['zink']));
+$waardes->setKwikPpm(htmlspecialchars($_POST['kwik']));
 
 $waardes->create();
 
-
-header('Location: results_table.php');
 
 
 ?>

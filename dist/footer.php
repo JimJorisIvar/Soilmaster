@@ -1,4 +1,3 @@
-</div>
 <footer class="app-footer">
     <div class="row">
         <div class="col-xs-12">

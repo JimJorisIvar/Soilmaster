@@ -18,11 +18,11 @@ class ListOfScans
 
         try
         {
-            $stmt = $this->db->prepare("SELECT * FROM waardes ORDER BY scanID");
+            $stmt = $this->db->prepare("SELECT * FROM waardes ORDER BY scan_id");
             $stmt->execute();
             while ($result = $stmt->fetch(PDO::FETCH_ASSOC))
             {
-                $this->listofscans[] = new Waardes($this->db, $result['scanID']);
+                $this->listofscans[] = new Waardes($this->db, $result['scan_id']);
             }
 
         }

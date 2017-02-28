@@ -12,7 +12,7 @@ class Waardes
     /**
      * @var int
      */
-    private $scanID;
+    private $scan_id;
     /**
      * @var string
      */
@@ -36,27 +36,11 @@ class Waardes
     /**
      * @var int
      */
-    private $antimoonppm;
-    /**
-     * @var int
-     */
     private $arseenppm;
     /**
      * @var int
      */
-    private $bariumppm;
-    /**
-     * @var int
-     */
     private $cadmiumppm;
-    /**
-     * @var int
-     */
-    private $chroomppm;
-    /**
-     * @var int
-     */
-    private $cobaltppm;
     /**
      * @var int
      */
@@ -72,20 +56,22 @@ class Waardes
     /**
      * @var int
      */
-    private $molybeenppm;
-    /**
-     * @var int
-     */
-    private $nikkelppm;
-    /**
-     * @var int
-     */
     private $zinkppm;
 
     /**
      * @param int
      */
     private $lastinsertedid;
+
+    /**
+     * @param string
+     */
+    private $lat;
+
+    /**
+     * @param string
+     */
+    private $lng;
 
     /**
      * @var array
@@ -96,12 +82,12 @@ class Waardes
      * @param $dbconnection
      * @param string $productID
      */
-    public function __construct($dbconnection, $scanID = null)
+    public function __construct($dbconnection, $scan_id = null)
     {
         $this->db = $dbconnection;
 
-        if (is_numeric($scanID) && $scanID != null) {
-            $this->read($scanID);
+        if (is_numeric($scan_id) && $scan_id != null) {
+            $this->read($scan_id);
         }
     }
 
@@ -111,26 +97,19 @@ class Waardes
     public function create()
     {
         try {
-            $stmt = $this->db->prepare("INSERT INTO waardes(locatie, temperatuur, vochtigheid, naamScan, antimoonPpm,arseenPpm,bariumPpm,cadmiumPpm, chroomPpm, cobaltPpm, koperPpm, kwikPpm, loodPpm, molybeenPpm, nikkelPpm, zinkPpm)
-                                    VALUES(:loca, :temp, :mois, :sname, :antppm, :arsppm, :barppm, :cadppm, :chrppm, :cobppm, :kopppm, :kwippm, :looppm, :molppm, :nikppm, :zinppm)");
+            $stmt = $this->db->prepare("INSERT INTO waardes(locatie, temperatuur, vochtigheid, naam_scan, arseen_ppm, cadmium_ppm, koper_ppm, kwik_ppm, lood_ppm, zink_ppm)
+                                    VALUES(:loca, :temp, :mois, :sname, :arsppm, :cadppm, :kopppm, :kwippm, :looppm, :zinppm)");
             $stmt->bindParam(":loca", $this->location);
             $stmt->bindParam(":temp", $this->temperature);
             $stmt->bindParam(":mois", $this->moisture);
             $stmt->bindParam(":sname", $this->scanname);
-            $stmt->bindParam(":antppm", $this->antimoonppm);
             $stmt->bindParam(":arsppm", $this->arseenppm);
-            $stmt->bindParam(":barppm", $this->bariumppm);
             $stmt->bindParam(":cadppm", $this->cadmiumppm);
-            $stmt->bindParam(":chrppm", $this->chroomppm);
-            $stmt->bindParam(":cobppm", $this->cobaltppm);
             $stmt->bindParam(":kopppm", $this->koperppm);
             $stmt->bindParam(":kwippm", $this->kwikppm);
             $stmt->bindParam(":looppm", $this->loodppm);
-            $stmt->bindParam(":molppm", $this->molybeenppm);
-            $stmt->bindParam(":nikppm", $this->nikkelppm);
             $stmt->bindParam(":zinppm", $this->zinkppm);
             $stmt->execute();
-            $this->lastinsertedid = $this->db->lastInsertId();
 
         } catch (PDOException $e) {
             echo "er is iets misgegaan met het maken van het product!" . " " . $e->getMessage();
@@ -142,7 +121,7 @@ class Waardes
      */
     public function scandata($id)
     {
-        $stmt = $this->db->prepare("SELECT * FROM waardes WHERE scanID = :scanid");
+        $stmt = $this->db->prepare("SELECT * FROM waardes WHERE scan_id = :scanid");
         $stmt->bindParam(":scanid", $id);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -162,30 +141,26 @@ class Waardes
             $stmt = $this->db->prepare("
                            SELECT *
                            FROM waardes
-                           WHERE waardes.scanID = :id
+                           WHERE waardes.scan_id = :id
                             ");
             $stmt->bindParam(":id", $id);
             $stmt->execute();
             while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $this->waardes_info = $result;
-                $this->scanID = $result['scanID'];
+                $this->scan_id = $result['scan_id'];
                 $this->date = $result['datum'];
                 $this->location = $result['locatie'];
                 $this->temperature = $result['temperatuur'];
                 $this->moisture = $result['vochtigheid'];
-                $this->scanname = $result['naamScan'];
-                $this->antimoonppm = $result['antimoonPpm'];
-                $this->arseenppm = $result['arseenPpm'];
-                $this->bariumppm = $result['bariumPpm'];
-                $this->cadmiumppm = $result['cadmiumPpm'];
-                $this->chroomppm = $result['chroomPpm'];
-                $this->cobaltppm = $result['cobaltPpm'];
-                $this->koperppm = $result['koperPpm'];
-                $this->kwikppm = $result['kwikPpm'];
-                $this->loodppm = $result['loodPpm'];
-                $this->molybeenppm = $result['molybeenPpm'];
-                $this->nikkelppm = $result['nikkelPpm'];
-                $this->zinkppm = $result['zinkPpm'];
+                $this->scanname = $result['naam_scan'];
+                $this->arseenppm = $result['arseen_ppm'];
+                $this->cadmiumppm = $result['cadmium_ppm'];
+                $this->koperppm = $result['koper_ppm'];
+                $this->kwikppm = $result['kwik_ppm'];
+                $this->loodppm = $result['lood_ppm'];
+                $this->zinkppm = $result['zink_ppm'];
+                $this->lat = $result['latitude'];
+                $this->lng = $result['longitude'];
             }
 
         } catch (PDOException $e) {
@@ -203,30 +178,18 @@ class Waardes
             throw new InvalidArgumentException('id is geen getal!');
         }
         try {
-            $stmt = $this->db->prepare("UPDATE waardes SET antimoonPpm = :antppm,
-                                                           arseenPpm = :arsppm,
-                                                           bariumPpm = :barppm,
-                                                           cadmiumPpm = :cadppm,
-                                                           chroomPpm = :chrppm,
-                                                           cobaltPpm = :cobppm,
-                                                           koperPpm = :kopppm,
-                                                           kwikPpm = :kwippm,
-                                                           loodPpm = :looppm,
-                                                           molybeenPpm = :molppm,
-                                                           nikkelPpm = :nikppm,
-                                                           zinkPpm = :zinppm,
+            $stmt = $this->db->prepare("UPDATE waardes SET arseen_ppm = :arsppm,
+                                                           cadmium_ppm = :cadppm,
+                                                           koper_ppm = :kopppm,
+                                                           kwik_ppm = :kwippm,
+                                                           lood_ppm = :looppm,
+                                                           zink_ppm = :zinppm,
                                                            WHERE id= scan_id:");
-            $stmt->bindParam(":antppm", $this->antimoonppm);
             $stmt->bindParam(":arsppm", $this->arseenppm);
-            $stmt->bindParam(":barppm", $this->bariumppm);
             $stmt->bindParam(":cadppm", $this->cadmiumppm);
-            $stmt->bindParam(":chrppm", $this->chroomppm);
-            $stmt->bindParam(":cobppm", $this->cobaltppm);
             $stmt->bindParam(":kopppm", $this->koperppm);
             $stmt->bindParam(":kwippm", $this->kwikppm);
             $stmt->bindParam(":looppm", $this->loodppm);
-            $stmt->bindParam(":molppm", $this->molybeenppm);
-            $stmt->bindParam(":nikppm", $this->nikkelppm);
             $stmt->bindParam(":zinppm", $this->zinkppm);
             $stmt->bindParam(":scan_id", $id);
             $stmt->execute();
@@ -240,9 +203,25 @@ class Waardes
      */
     public function delete($id)
     {
-        $stmt = $this->db->prepare("DELETE FROM waardes WHERE scanID= :scanid");
+        $stmt = $this->db->prepare("DELETE FROM waardes WHERE scan_id= :scanid");
         $stmt->bindParam(':scanid', $id, PDO::PARAM_INT);
         $stmt->execute();
+    }
+
+    /**
+     * @return string
+     */
+    public function getLatitude()
+    {
+        return $this->lat;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLongitude()
+    {
+        return $this->lng;
     }
 
     /**
@@ -258,15 +237,15 @@ class Waardes
      */
     public function getScanid()
     {
-        return $this->scanID;
+        return $this->scan_id;
     }
 
     /**
-     * @param $scanID
+     * @param $scan_id
      */
-    public function setScanid($scanID)
+    public function setScanid($scan_id)
     {
-        $this->scanID = htmlentities($scanID);
+        $this->scan_id = htmlentities($scan_id);
     }
 
     /**
@@ -344,24 +323,9 @@ class Waardes
     /**
      * @return int
      */
-    public function getAntimoonPpm()
-    {
-        return $this->antimoonppm;
-    }
-
-    /**
-     * @return int
-     */
     public function getArseenPpm()
     {
         return $this->arseenppm;
-    }
-    /**
-     * @return int
-     */
-    public function getBariumPpm()
-    {
-        return $this->bariumppm;
     }
 
     /**
@@ -370,22 +334,6 @@ class Waardes
     public function getCadmiumPpm()
     {
         return $this->cadmiumppm;
-    }
-
-    /**
- * @return int
- */
-    public function getChroomPpm()
-    {
-        return $this->chroomppm;
-    }
-
-    /**
- * @return int
- */
-    public function getCobaltPpm()
-    {
-        return $this->cobaltppm;
     }
 
     /**
@@ -415,22 +363,6 @@ class Waardes
     /**
  * @return int
  */
-    public function getMolybeenPpm()
-    {
-        return $this->molybeenppm;
-    }
-
-    /**
- * @return int
- */
-    public function getNikkelPpm()
-    {
-        return $this->nikkelppm;
-    }
-
-    /**
- * @return int
- */
     public function getZinkPpm()
     {
         return $this->zinkppm;
@@ -446,14 +378,6 @@ class Waardes
 
 
     /**
-     * @param int $antimoonppm
-     */
-    public function setAntimoonPpm($antimoonppm)
-    {
-        $this->antimoonppm = htmlentities($antimoonppm);
-    }
-
-    /**
      * @param int $arseenppm
      */
     public function setArseenPpm($arseenppm)
@@ -461,13 +385,6 @@ class Waardes
         $this->arseenppm = htmlentities($arseenppm);
     }
 
-    /**
-     * @param int $bariumppm
-     */
-    public function setBariumPpm($bariumppm)
-    {
-        $this->bariumppm = htmlentities($bariumppm);
-    }
 
     /**
      * @param int $arseenppm
@@ -475,5 +392,37 @@ class Waardes
     public function setCadmiumPpm($cadmiumppm)
     {
         $this->cadmiumppm = htmlentities($cadmiumppm);
+    }
+
+    /**
+     * @param int $loodppm
+     */
+    public function setLoodPpm($loodppm)
+    {
+        $this->loodppm = htmlentities($loodppm);
+    }
+
+    /**
+     * @param int $koperppm
+     */
+    public function setKoperPpm($koperppm)
+    {
+        $this->koperppm = htmlentities($koperppm);
+    }
+
+    /**
+     * @param int $zinkppm
+     */
+    public function setZinkPpm($zinkppm)
+    {
+            $this->zinkppm = htmlentities($zinkppm);
+    }
+
+    /**
+     * @param int $kwikppm
+     */
+    public function setKwikPpm($kwikppm)
+    {
+        $this->kwikppm = htmlentities($kwikppm);
     }
 }

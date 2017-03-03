@@ -13,7 +13,7 @@ header("Content-type: text/xml");
         $loca = $scan->getLocation();
         //sscanf splits de coordinaten in twee om deze vervolgens
         sscanf("($loca)", "(%f, %f)", $lat, $lng);
-    echo '<marker id="'.$scan->getScanid().'" address="580 Darling Street, Rozelle, NSW" name="'.$scan->getScanName().'" lat="'.$lat.'" lng="'.$lng.'" type=""/>';};?>
+    echo '<marker id="'.$scan->getScanid().'" lood="Lood: '.$scan->getLoodPpm().' PPM" koper="koper: '.$scan->getKoperPpm().' PPM" address="ADDRESS HIER" name="'.$scan->getScanName().'" lat="'.$lat.'" lng="'.$lng.'" type="info"/>';};?>
 </markers>
 
 

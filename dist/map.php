@@ -25,7 +25,7 @@ include_once "adminHeader.php";
                             });
 
                             if (navigator.geolocation) {
-                                navigator.geolocation.getCurrentPosition(function(position) {
+                                navigator.geolocation.getCurrentPosition(function (position) {
                                     var pos = {
                                         lat: position.coords.latitude,
                                         lng: position.coords.longitude
@@ -34,13 +34,21 @@ include_once "adminHeader.php";
                                     infoWindow.setPosition(pos);
                                     infoWindow.setContent('Location found.');
                                     map.setCenter(pos);
-                                }, function() {
+                                }, function () {
                                     handleLocationError(true, infoWindow, map.getCenter());
                                 });
                             } else {
                                 // Browser doesn't support Geolocation
                                 handleLocationError(false, infoWindow, map.getCenter());
                             }
+
+                        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                            infoWindow.setPosition(pos);
+                            infoWindow.setContent(browserHasGeolocation ?
+                                'Error: The Geolocation service failed.' :
+                                'Error: Your browser doesn\'t support geolocation.');
+                        }
+
                             var infoWindow = new google.maps.InfoWindow;
 
                             // Change this depending on the name of your PHP or XML file
@@ -50,6 +58,8 @@ include_once "adminHeader.php";
                                 Array.prototype.forEach.call(markers, function(markerElem) {
                                     var name = markerElem.getAttribute('name');
                                     var address = markerElem.getAttribute('address');
+                                    var lood = markerElem.getAttribute('lood');
+                                    var koper = markerElem.getAttribute('koper');
                                     var type = markerElem.getAttribute('type');
                                     var point = new google.maps.LatLng(
                                         parseFloat(markerElem.getAttribute('lat')),
@@ -57,12 +67,12 @@ include_once "adminHeader.php";
 
                                     var infowincontent = document.createElement('div');
                                     var strong = document.createElement('strong');
-                                    strong.textContent = name
+                                    strong.textContent = name;
                                     infowincontent.appendChild(strong);
                                     infowincontent.appendChild(document.createElement('br'));
 
                                     var text = document.createElement('text');
-                                    text.textContent = address
+                                    text.textContent = [lood, koper];
                                     infowincontent.appendChild(text);
                                     var icon = customLabel[type] || {};
                                     var marker = new google.maps.Marker({
@@ -77,8 +87,6 @@ include_once "adminHeader.php";
                                 });
                             });
                         }
-
-
 
                         function downloadUrl(url, callback) {
                             var request = window.ActiveXObject ?

@@ -12,7 +12,7 @@ include_once "connection.php";
 
     <link rel="stylesheet" type="text/css" href="./assets/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/flat-admin.css">
-
+    <script src="https://cdn.klokantech.com/maptilerlayer/v1/index.js"></script
     <!-- Theme -->
     <link rel="stylesheet" type="text/css" href="./assets/css/theme/blue-sky.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/theme/blue.css">
@@ -22,7 +22,7 @@ include_once "connection.php";
 </head>
 <style>
     .map_map {
-        height: 800px;
+        height: 550px;
         width: 100%;
     }
     .map_dashboard {
@@ -30,7 +30,7 @@ include_once "connection.php";
         width: 100%;
     }
     .map_result {
-        height: 525px;
+        height: 480px;
         width: 100%;
     }
 </style>

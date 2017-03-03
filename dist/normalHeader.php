@@ -22,7 +22,7 @@ include_once "connection.php";
 </head>
 <style>
     .map_map {
-        height: 800px;
+        height: 550px;
         width: 100%;
     }
     .map_dashboard {
@@ -30,7 +30,7 @@ include_once "connection.php";
         width: 100%;
     }
     .map_result {
-        height: 525px;
+        height: 480px;
         width: 100%;
     }
 </style>

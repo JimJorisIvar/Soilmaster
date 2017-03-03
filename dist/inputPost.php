@@ -16,6 +16,6 @@ $waardes->setKwikPpm(htmlspecialchars($_POST['kwik']));
 
 $waardes->create();
 
-
+header('Location: results_table');
 
 ?>

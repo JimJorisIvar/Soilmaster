@@ -30,7 +30,7 @@ include_once "connection.php";
         width: 100%;
     }
     .map_result {
-        height: 480px;
+        height: 500px;
         width: 100%;
     }
 </style>

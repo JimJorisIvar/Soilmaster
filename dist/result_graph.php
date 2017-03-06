@@ -12,7 +12,6 @@ include_once "adminHeader.php";
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-12">
                         <?php
 
                         require "razorflow_php/razorflow.php";
@@ -110,18 +109,18 @@ include_once "adminHeader.php";
                                 $chart = new ChartComponent("sales_chart");
                                 $chart->setCaption("");
                                 $chart->setDimensions(12, 8);
-                                $chart->setLabels(array("Gemeten scan", "Toegestaan"));
-                                $chart->addSeries("Lood", "Lood", array($scan->getLoodPpm(), 50),
+                                $chart->setLabels(array("Gemeten scan"));
+                                $chart->addSeries("Lood", "Lood", array($scan->getLoodPpm()),
                                     $loodkleur);
-                                $chart->addSeries("Kwik", "Kwik", array($scan->getKwikPpm(), 40),
+                                $chart->addSeries("Kwik", "Kwik", array($scan->getKwikPpm()),
                                     $kwikkleur);
-                                $chart->addSeries("Arseen", "Arseen", array($scan->getArseenPpm(), 50),
+                                $chart->addSeries("Arseen", "Arseen", array($scan->getArseenPpm()),
                                     $arseenkleur);
-                                $chart->addSeries("Cadmium", "Cadmium", array($scan->getCadmiumPpm(), 10),
+                                $chart->addSeries("Cadmium", "Cadmium", array($scan->getCadmiumPpm()),
                                     $cadmiumkleur);
-                                $chart->addSeries("Koper", "Koper", array($scan->getKoperPpm(), 60),
+                                $chart->addSeries("Koper", "Koper", array($scan->getKoperPpm()),
                                     $koperkleur);
-                                $chart->addSeries("Zink", "Zink", array($scan->getZinkPpm(), 45),
+                                $chart->addSeries("Zink", "Zink", array($scan->getZinkPpm()),
                                     $zinkkleur);
                                 $chart->setYAxis('PPM', array("numberPrefix" => '', "numberHumanize" => true));
                                 $this->addComponent($chart);
@@ -163,12 +162,10 @@ include_once "adminHeader.php";
                                 </div>
                             </a>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <div class="card">
             <div class="card-header">
@@ -195,6 +192,55 @@ include_once "adminHeader.php";
                                 });
                             }
                         </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                Toegestane waardes
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-12">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Stof</th>
+                                    <th>Toegestane waarde (PPM)</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Lood</td>
+                                    <td>50</td>
+                                </tr>
+                                <tr>
+                                    <td>Kwik</td>
+                                    <td>50</td>
+                                </tr>
+                                <tr>
+                                    <td>Arseen</td>
+                                    <td>50</td>
+                                </tr>
+                                <tr>
+                                    <td>Cadmium</td>
+                                    <td>50</td>
+                                </tr>
+                                <tr>
+                                    <td>Koper</td>
+                                    <td>50</td>
+                                </tr>
+                                <tr>
+                                    <td>Zink</td>
+                                    <td>50</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -9,12 +9,23 @@ include_once "adminHeader.php";
                 <div>
                     <div id="map" class="map_map"></div>
                     <script>
+                            //  start google maps API
+
+                        var customLabel = {
+                            restaurant: {
+                                label: 'DANGER'
+                            },
+                            bar: {
+                                label: 'B'
+                            }
+                        };
+                            //  Create the map
                         function initMap() {
                             var map = new google.maps.Map(document.getElementById('map'), {
-                                center: new google.maps.LatLng(51.3851023, 4.6547483),
+                                center: new google.maps.LatLng(52.3851023, 4.6547483),
                                 zoom: 12
                             });
-
+                                //   Use user location
                             if (navigator.geolocation) {
                                 navigator.geolocation.getCurrentPosition(function (position) {
                                     var pos = {
@@ -23,7 +34,7 @@ include_once "adminHeader.php";
                                     };
 
                                     infoWindow.setPosition(pos);
-                                    infoWindow.setContent('Location found.');
+                                    infoWindow.setContent('U bevindt zich hier.');
                                     map.setCenter(pos);
                                 }, function () {
                                     handleLocationError(true, infoWindow, map.getCenter());
@@ -33,6 +44,14 @@ include_once "adminHeader.php";
                                 handleLocationError(false, infoWindow, map.getCenter());
                             }
 
+
+                        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                            infoWindow.setPosition(pos);
+                            infoWindow.setContent(browserHasGeolocation ?
+                                'Error: The Geolocation service failed.' :
+                                'Error: Your browser doesn\'t support geolocation.');
+                        }
+                            // Create infowindow for marker click
                             function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                                 infoWindow.setPosition(pos);
                                 infoWindow.setContent(browserHasGeolocation ?
@@ -42,15 +61,16 @@ include_once "adminHeader.php";
 
                             var infoWindow = new google.maps.InfoWindow;
 
-                            // Change this depending on the name of your PHP or XML file
+                            // Link to mapmarkers.php to recieve the markerdata and get attributes from it
+
                             downloadUrl('mapmarkers.php', function(data) {
                                 var xml = data.responseXML;
                                 var markers = xml.documentElement.getElementsByTagName('marker');
                                 Array.prototype.forEach.call(markers, function(markerElem) {
                                     var name = markerElem.getAttribute('name');
                                     var address = markerElem.getAttribute('address');
-                                    var lood = markerElem.getAttribute('lood');
-                                    var koper = markerElem.getAttribute('koper');
+                                    var date = markerElem.getAttribute('date');
+                                    var id = markerElem.getAttribute('id');
                                     var type = markerElem.getAttribute('type');
                                     var point = new google.maps.LatLng(
                                         parseFloat(markerElem.getAttribute('lat')),
@@ -62,17 +82,50 @@ include_once "adminHeader.php";
                                     strong.textContent = name;
                                     infowincontent.appendChild(strong);
                                     infowincontent.appendChild(document.createElement('br'));
+                                    infowincontent.appendChild(document.createElement('br'));
 
                                     var text = document.createElement('text');
-                                    text.textContent = [lood, koper];
+                                    text.textContent = [date];
                                     infowincontent.appendChild(text);
+
+                                    infowincontent.appendChild(document.createElement('br'));
+                                    infowincontent.appendChild(document.createElement('br'));
+
+                                    // Create link to scanresult in infowindow
+
+                                    var link = document.createElement('a');
+                                    var linkText = document.createTextNode('Scan resultaat inzien');
+                                    link.setAttribute('href', "result_graph");
+                                    link.appendChild(linkText);
+                                    infowincontent.appendChild(link);
+
                                     var icon = customLabel[type] || {};
                                     var marker = new google.maps.Marker({
                                         map: map,
                                         position: point,
                                         label: icon.label
                                     });
+
+                                    // send Json data to setSelected and after to result_graph to show information about the clicked marker ID
+
                                     marker.addListener('click', function() {
+                                        id = id;
+                                        var postData = {
+                                            'id': id
+                                        };
+
+                                        var url = "setSelected";
+
+                                        $.ajax({
+                                            type: "POST",
+                                            url: url,
+                                            data: postData,
+                                            dataType: "json",
+                                            success: function(data)
+                                            {
+                                            }
+                                        });
+                                    //  window.open("result_graph");
                                         infoWindow.setContent(infowincontent);
                                         infoWindow.open(map, marker);
                                     });
@@ -103,6 +156,11 @@ include_once "adminHeader.php";
         </div>
     </div>
 </div>
+<html>
+<head></head>
+<body>
+</body>
+</html>
 
 <?php
 include_once "footer.php";

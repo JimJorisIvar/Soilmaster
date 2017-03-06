@@ -44,7 +44,8 @@ include_once "footer.php";
 
 
 <script>
-        $('.scan').click(function() {
+    $( document ).ready(function() {
+        $('.scan').on( "click", function() {
         id = $(this).data('scanid');
         var postData = {
         'id': id
@@ -64,6 +65,7 @@ include_once "footer.php";
         });
             window.location.href='result_graph';
         });
+    });
 </script>
 
 

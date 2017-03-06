@@ -21,8 +21,16 @@ include_once "connection.php";
     <script src="https://use.fontawesome.com/d213b1b51c.js"></script>
 </head>
 <style>
-    #map {
-        height: 400px;
+    .map_map {
+        height: 550px;
+        width: 100%;
+    }
+    .map_dashboard {
+        height: 300px;
+        width: 100%;
+    }
+    .map_result {
+        height: 480px;
         width: 100%;
     }
 </style>
@@ -30,7 +38,7 @@ include_once "connection.php";
 <div class="app app-default">
     <aside class="app-sidebar" id="sidebar">
         <div class="sidebar-header">
-            <a class="sidebar-brand" href="#"><span class="highlight">Soilmaster</span> Admin</a>
+            <a class="sidebar-brand" href="#"><span class="highlight">Soilmaster</span> Mechanic</a>
             <button type="button" class="sidebar-toggle">
                 <i class="fa fa-times"></i>
             </button>
@@ -46,7 +54,15 @@ include_once "connection.php";
                     </a>
                 </li>
                 <li class="active">
-                    <a href="results_table.php">
+                    <a href="map">
+                        <div class="icon">
+                            <i class="fa fa-map" aria-hidden="true"></i>
+                        </div>
+                        <div class="title">Map</div>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="results_table">
                         <div class="icon">
                             <i class="fa fa-bar-chart" aria-hidden="true"></i>
                         </div>
@@ -54,7 +70,7 @@ include_once "connection.php";
                     </a>
                 </li>
                 <li class="active">
-                    <a href="./input.php">
+                    <a href="input">
                         <div class="icon">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </div>
@@ -70,7 +86,7 @@ include_once "connection.php";
                     </a>
                     <div class="dropdown-menu">
                         <ul>
-                            <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> Admin</li>
+                            <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> mechanic</li>
                             <li><a href="./pages/form.html">Form</a></li>
                             <li><a href="./pages/profile.html">Profile</a></li>
                             <li><a href="./pages/search.html">Search</a></li>
@@ -231,18 +247,3 @@ include_once "connection.php";
             </div>
         </nav>
 
-        <div class="btn-floating" id="help-actions">
-            <div class="btn-bg"></div>
-            <button type="button" class="btn btn-default btn-toggle" data-toggle="toggle" data-target="#help-actions">
-                <i class="icon fa fa-plus"></i>
-                <span class="help-text">Shortcut</span>
-            </button>
-            <div class="toggle-content">
-                <ul class="actions">
-                    <li><a href="#">Website</a></li>
-                    <li><a href="#">Documentation</a></li>
-                    <li><a href="#">Issues</a></li>
-                    <li><a href="#">About</a></li>
-                </ul>
-            </div>
-        </div>

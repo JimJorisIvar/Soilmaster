@@ -9,7 +9,6 @@ include_once "adminHeader.php";
                 <div>
                     <div id="map" class="map_map"></div>
                     <script>
-
                             //  start google maps API
 
                         var customLabel = {
@@ -45,6 +44,7 @@ include_once "adminHeader.php";
                                 handleLocationError(false, infoWindow, map.getCenter());
                             }
 
+
                         function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                             infoWindow.setPosition(pos);
                             infoWindow.setContent(browserHasGeolocation ?
@@ -52,6 +52,13 @@ include_once "adminHeader.php";
                                 'Error: Your browser doesn\'t support geolocation.');
                         }
                             // Create infowindow for marker click
+                            function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                                infoWindow.setPosition(pos);
+                                infoWindow.setContent(browserHasGeolocation ?
+                                    'Error: The Geolocation service failed.' :
+                                    'Error: Your browser doesn\'t support geolocation.');
+                                }
+
                             var infoWindow = new google.maps.InfoWindow;
 
                             // Link to mapmarkers.php to recieve the markerdata and get attributes from it
@@ -67,7 +74,8 @@ include_once "adminHeader.php";
                                     var type = markerElem.getAttribute('type');
                                     var point = new google.maps.LatLng(
                                         parseFloat(markerElem.getAttribute('lat')),
-                                        parseFloat(markerElem.getAttribute('lng')));
+                                        parseFloat(markerElem.getAttribute('lng'))
+                                    );
 
                                     var infowincontent = document.createElement('div');
                                     var strong = document.createElement('strong');
@@ -126,19 +134,19 @@ include_once "adminHeader.php";
                         }
 
                         function downloadUrl(url, callback) {
-                            var request = window.ActiveXObject ?
-                                new ActiveXObject('Microsoft.XMLHTTP') :
-                                new XMLHttpRequest;
+                        var request = window.ActiveXObject ?
+                        new ActiveXObject('Microsoft.XMLHTTP') :
+                        new XMLHttpRequest;
 
-                            request.onreadystatechange = function() {
-                                if (request.readyState == 4) {
-                                    request.onreadystatechange = doNothing;
-                                    callback(request, request.status);
-                                }
-                            };
+                        request.onreadystatechange = function() {
+                        if (request.readyState == 4) {
+                        request.onreadystatechange = doNothing;
+                        callback(request, request.status);
+                        }
+                        };
 
-                            request.open('GET', url, true);
-                            request.send(null);
+                        request.open('GET', url, true);
+                        request.send(null);
                         }
 
                         function doNothing() {}

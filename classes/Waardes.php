@@ -14,6 +14,10 @@ class Waardes
      */
     private $scan_id;
     /**
+     * @var int
+     */
+    private $device_id;
+    /**
      * @var string
      */
     private $date;
@@ -36,7 +40,15 @@ class Waardes
     /**
      * @var int
      */
-    private $arseenppm;
+    private $kobaltppm;
+    /**
+     * @var int
+     */
+    private $kobalt_warning;
+    /**
+     * @var int
+     */
+    private $kobalt_intervene;
     /**
      * @var int
      */
@@ -44,11 +56,24 @@ class Waardes
     /**
      * @var int
      */
+    private $cadmium_warning;
+    /**
+     * @var int
+     */
+    private $cadmium_intervene;
+    /**
+     * @var int
+     */
+
     private $koperppm;
     /**
      * @var int
      */
-    private $kwikppm;
+    private $koper_warning;
+    /**
+     * @var int
+     */
+    private $koper_intervene;
     /**
      * @var int
      */
@@ -56,13 +81,41 @@ class Waardes
     /**
      * @var int
      */
-    private $zinkppm;
-
+    private $lood_warning;
+    /**
+     * @var int
+     */
+    private $lood_intervene;
     /**
      * @param int
      */
-    private $lastinsertedid;
+    private $kwikppm;
+    /**
+     * @var int
+     */
+    private $kwik_warning;
+    /**
+     * @var int
+     */
+    private $kwik_intervene;
+    /**
+     * @var int
+     */
+    private $zinkppm;
+    /**
+     * @var int
+     */
+    private $zink_warning;
+    /**
+     * @var int
+     */
+    private $zink_intervene;
+    /**
+     * @var int
+     */
 
+
+    private $lastinsertedid;
     /**
      * @param string
      */
@@ -97,13 +150,13 @@ class Waardes
     public function create()
     {
         try {
-            $stmt = $this->db->prepare("INSERT INTO waardes(locatie, temperatuur, vochtigheid, naam_scan, arseen_ppm, cadmium_ppm, koper_ppm, kwik_ppm, lood_ppm, zink_ppm)
-                                    VALUES(:loca, :temp, :mois, :sname, :arsppm, :cadppm, :kopppm, :kwippm, :looppm, :zinppm)");
+            $stmt = $this->db->prepare("INSERT INTO waardes(locatie, temperatuur, vochtigheid, naam_scan, kobalt_ppm, cadmium_ppm, koper_ppm, kwik_ppm, lood_ppm, zink_ppm)
+                                    VALUES(:loca, :temp, :mois, :sname, :kobppm, :cadppm, :kopppm, :kwippm, :looppm, :zinppm)");
             $stmt->bindParam(":loca", $this->location);
             $stmt->bindParam(":temp", $this->temperature);
             $stmt->bindParam(":mois", $this->moisture);
             $stmt->bindParam(":sname", $this->scanname);
-            $stmt->bindParam(":arsppm", $this->arseenppm);
+            $stmt->bindParam(":kobppm", $this->kobaltppm);
             $stmt->bindParam(":cadppm", $this->cadmiumppm);
             $stmt->bindParam(":kopppm", $this->koperppm);
             $stmt->bindParam(":kwippm", $this->kwikppm);
@@ -153,12 +206,24 @@ class Waardes
                 $this->temperature = $result['temperatuur'];
                 $this->moisture = $result['vochtigheid'];
                 $this->scanname = $result['naam_scan'];
-                $this->arseenppm = $result['arseen_ppm'];
+                $this->kobaltppm = $result['kobalt_ppm'];
+                $this->kobalt_warning = $result['kobalt_warning'];
+                $this->kobalt_intervene = $result['kobalt_intervene'];
                 $this->cadmiumppm = $result['cadmium_ppm'];
+                $this->cadmium_warning = $result['cadmium_warning'];
+                $this->cadmium_intervene = $result['cadmium_intervene'];
                 $this->koperppm = $result['koper_ppm'];
+                $this->koper_warning = $result['koper_warning'];
+                $this->koper_intervene = $result['koper_intervene'];
                 $this->kwikppm = $result['kwik_ppm'];
+                $this->kwik_warning = $result['kwik_warning'];
+                $this->kwik_intervene = $result['kwik_intervene'];
                 $this->loodppm = $result['lood_ppm'];
+                $this->lood_warning = $result['lood_warning'];
+                $this->lood_intervene = $result['lood_intervene'];
                 $this->zinkppm = $result['zink_ppm'];
+                $this->zink_warning = $result['zink_warning'];
+                $this->zink_intervene = $result['zink_intervene'];
                 $this->lat = $result['latitude'];
                 $this->lng = $result['longitude'];
             }
@@ -178,14 +243,14 @@ class Waardes
             throw new InvalidArgumentException('id is geen getal!');
         }
         try {
-            $stmt = $this->db->prepare("UPDATE waardes SET arseen_ppm = :arsppm,
+            $stmt = $this->db->prepare("UPDATE waardes SET kobalt_ppm = :kobppm,
                                                            cadmium_ppm = :cadppm,
                                                            koper_ppm = :kopppm,
                                                            kwik_ppm = :kwippm,
                                                            lood_ppm = :looppm,
                                                            zink_ppm = :zinppm,
                                                            WHERE id= scan_id:");
-            $stmt->bindParam(":arsppm", $this->arseenppm);
+            $stmt->bindParam(":kobppm", $this->kobaltppm);
             $stmt->bindParam(":cadppm", $this->cadmiumppm);
             $stmt->bindParam(":kopppm", $this->koperppm);
             $stmt->bindParam(":kwippm", $this->kwikppm);
@@ -323,14 +388,31 @@ class Waardes
     /**
      * @return int
      */
-    public function getArseenPpm()
+    public function getKobaltPpm()
     {
-        return $this->arseenppm;
+        return $this->kobaltppm;
+    }
+
+    /**
+     * @return int
+     */
+    public function getKobaltWarning()
+    {
+        return $this->kobalt_warning;
+    }
+
+    /**
+     * @return int
+     */
+    public function getKobaltIntervene()
+    {
+        return $this->kobalt_intervene;
     }
 
     /**
  * @return int
  */
+
     public function getCadmiumPpm()
     {
         return $this->cadmiumppm;
@@ -339,6 +421,23 @@ class Waardes
     /**
  * @return int
  */
+    public function getCadmiumWarning()
+    {
+        return $this->cadmium_warning;
+    }
+
+ /**
+* @return int
+*/
+    public function getCadmiumIntervene()
+    {
+        return $this->cadmium_intervene;
+    }
+
+/**
+* @return int
+*/
+
     public function getKoperPpm()
     {
         return $this->koperppm;
@@ -347,6 +446,23 @@ class Waardes
     /**
  * @return int
  */
+    public function getKoperWarning()
+    {
+        return $this->koper_warning;
+    }
+
+ /**
+* @return int
+*/
+    public function getKoperIntervene()
+    {
+        return $this->koper_intervene;
+    }
+
+/**
+* @return int
+*/
+
     public function getKwikPpm()
     {
         return $this->kwikppm;
@@ -355,9 +471,44 @@ class Waardes
     /**
  * @return int
  */
+    public function getKwikWarning()
+    {
+        return $this->kwik_warning;
+    }
+
+ /**
+ * @return int
+ */
+
+    public function getKwikIntervene()
+    {
+        return $this->kwik_intervene;
+    }
+
+ /**
+* @return int
+*/
+
     public function getLoodPpm()
     {
         return $this->loodppm;
+    }
+
+    /**
+    * @return int
+    */
+
+   public function getLoodWarning()
+   {
+       return $this->lood_warning;
+   }
+   /**
+  * @return int
+  */
+
+    public function getLoodIntervene()
+    {
+        return $this->lood_intervene;
     }
 
     /**
@@ -366,6 +517,22 @@ class Waardes
     public function getZinkPpm()
     {
         return $this->zinkppm;
+    }
+
+    /**
+    * @return int
+    */
+    public function getZinkWarning()
+    {
+        return $this->zink_warning;
+    }
+
+    /**
+    * @return int
+    */
+    public function getZinkIntervene()
+    {
+        return $this->zink_intervene;
     }
 
     /**
@@ -378,20 +545,48 @@ class Waardes
 
 
     /**
-     * @param int $arseenppm
+     * @param int $kobaltppm
      */
-    public function setArseenPpm($arseenppm)
+    public function setKobaltPpm($kobaltppm)
     {
-        $this->arseenppm = htmlentities($arseenppm);
+        $this->kobaltppm = htmlentities($kobaltppm);
+    }
+    /**
+     * @param int $kobalt_warning
+     */
+    public function setKobaltWarning($kobalt_warning)
+    {
+        $this->kobalt_warning = htmlentities($kobalt_warning);
+    }
+    /**
+     * @param int $kobalt_intervene
+     */
+    public function setKobaltIntervene($kobalt_intervene)
+    {
+        $this->kobalt_intervene = htmlentities($kobalt_intervene);
     }
 
 
     /**
-     * @param int $arseenppm
+     * @param int $cadmiumppm
      */
     public function setCadmiumPpm($cadmiumppm)
     {
         $this->cadmiumppm = htmlentities($cadmiumppm);
+    }
+    /**
+     * @param int $cadmium_warning
+     */
+    public function setCadmiumWarning($cadmium_warning)
+    {
+        $this->cadmium_warning = htmlentities($cadmium_warning);
+    }
+    /**
+     * @param int $cadmium_intervene
+     */
+    public function setCadmiumIntervene($cadmium_intervene)
+    {
+        $this->cadmium_intervene = htmlentities($cadmium_intervene);
     }
 
     /**
@@ -401,6 +596,20 @@ class Waardes
     {
         $this->loodppm = htmlentities($loodppm);
     }
+    /**
+     * @param int $lood_warning
+     */
+    public function setLoodWarning($lood_warning)
+    {
+        $this->lood_warning = htmlentities($lood_warning);
+    }
+    /**
+     * @param int $lood_intervene
+     */
+    public function setLoodIntervene($lood_intervene)
+    {
+        $this->lood_intervene = htmlentities($lood_intervene);
+    }
 
     /**
      * @param int $koperppm
@@ -408,6 +617,20 @@ class Waardes
     public function setKoperPpm($koperppm)
     {
         $this->koperppm = htmlentities($koperppm);
+    }
+    /**
+     * @param int $koper_warning
+     */
+    public function setKoperWarning($koper_warning)
+    {
+        $this->koper_warning = htmlentities($koper_warning);
+    }
+    /**
+     * @param int $koper_intervene
+     */
+    public function setKoperIntervene($koper_intervene)
+    {
+        $this->koper_intervene = htmlentities($koper_intervene);
     }
 
     /**
@@ -417,6 +640,20 @@ class Waardes
     {
             $this->zinkppm = htmlentities($zinkppm);
     }
+    /**
+     * @param int $zink_warning
+     */
+    public function setZinkWarning($zink_warning)
+    {
+            $this->zink_warning = htmlentities($zink_warning);
+    }
+    /**
+     * @param int $zink_intervene
+     */
+    public function setZinkIntervene($zink_intervene)
+    {
+            $this->zink_intervene = htmlentities($zink_intervene);
+    }
 
     /**
      * @param int $kwikppm
@@ -424,5 +661,19 @@ class Waardes
     public function setKwikPpm($kwikppm)
     {
         $this->kwikppm = htmlentities($kwikppm);
+    }
+    /**
+     * @param int $kwik_warning
+     */
+    public function setKwikWarning($kwik_warning)
+    {
+        $this->kwik_warning = htmlentities($kwik_warning);
+    }
+    /**
+     * @param int $kwik_intervene
+     */
+    public function setKwikIntervene($kwik_intervene)
+    {
+        $this->kwik_intervene = htmlentities($kwik_intervene);
     }
 }

@@ -81,13 +81,13 @@ include_once "adminHeader.php";
                                             $kwikkleur = array("seriesColor" => "#29c75f");
                                         }
                                 }
-                                if ($scan->getArseenPpm() > 50)
+                                if ($scan->getKobaltPpm() > 50)
                                 {
                                     $arseenkleur = array("seriesColor" => "#E74C3C");
                                 }
                                 else
                                 {
-                                        if ($scan->getArseenPpm() > 30) {
+                                        if ($scan->getKobaltPpm() > 30) {
                                             $arseenkleur = array("seriesColor" => "#FFC153");
                                         } else {
                                             $arseenkleur = array("seriesColor" => "#29c75f");
@@ -114,7 +114,7 @@ include_once "adminHeader.php";
                                     $loodkleur);
                                 $chart->addSeries("Kwik", "Kwik", array($scan->getKwikPpm()),
                                     $kwikkleur);
-                                $chart->addSeries("Arseen", "Arseen", array($scan->getArseenPpm()),
+                                $chart->addSeries("Kobalt", "Kobalt", array($scan->getKobaltPpm()),
                                     $arseenkleur);
                                 $chart->addSeries("Cadmium", "Cadmium", array($scan->getCadmiumPpm()),
                                     $cadmiumkleur);

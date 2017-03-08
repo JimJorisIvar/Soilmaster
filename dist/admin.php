@@ -154,6 +154,7 @@ include_once "adminHeader.php";
   <div class="card-body">
     <i class="icon fa fa-wifi fa-4x"></i>
     <div class="content">
+    <!--Get most recent scan_id from the database from this day-->
       <div class="title">Scans today</div>
       <div class="value"><span class="sign"></span>6</div>
     </div>
@@ -166,6 +167,7 @@ include_once "adminHeader.php";
   <div class="card-body">
     <i class="icon fa fa-wifi fa-4x"></i>
     <div class="content">
+        <!--Get most recent scan_id from the database in total-->
       <div class="title">Total scans</div>
       <div class="value"><span class="sign"></span>13</div>
     </div>
@@ -178,6 +180,7 @@ include_once "adminHeader.php";
   <div class="card-body">
     <i class="icon fa fa-user-plus fa-4x"></i>
     <div class="content">
+<!--        Get the number of total scanning devices-->
       <div class="title">Scanning Mechanics</div>
       <div class="value"><span class="sign"></span>32</div>
     </div>

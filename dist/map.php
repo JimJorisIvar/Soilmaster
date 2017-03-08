@@ -12,8 +12,11 @@ include_once "adminHeader.php";
                             //  start google maps API
 
                         var customLabel = {
-                            restaurant: {
-                                label: 'DANGER'
+                            0: {
+                                label: '0'
+                            },
+                            1: {
+                                label: '1'
                             },
                             bar: {
                                 label: 'B'

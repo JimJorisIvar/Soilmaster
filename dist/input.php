@@ -51,7 +51,7 @@ include_once "adminHeader.php";
                                 </div>
                                 <textarea placeholder="Comments" name="name" rows="3" class="form-control"></textarea>
                                 <div class="checkbox">
-                                    <input type="checkbox" id="checkbox1">
+                                    <input type="checkbox" id="checkbox1" onchange="document.getElementById('send-button').disabled = !this.checked;">
                                     <label for="checkbox1">
                                         I agree with the terms and conditions.
                                     </label>
@@ -59,7 +59,7 @@ include_once "adminHeader.php";
                             </div>
                             <div class="col-md-12 text-center">
                                 <hr>
-                                <button type="submit" class="btn btn-success">Send values to database</button>
+                                <button type="submit" class="btn btn-success" id="send-button" disabled="send-button">Send values to database</button>
                             </div>
                         </div>
                     </div>

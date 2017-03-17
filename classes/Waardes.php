@@ -113,24 +113,19 @@ class Waardes
     /**
      * @var int
      */
-
-
     private $lastinsertedid;
     /**
      * @param string
      */
     private $lat;
-
     /**
      * @param string
      */
     private $lng;
-
     /**
      * @var array
      */
     private $waardes_info = array();
-
     /**
      * @param $dbconnection
      * @param string $productID
@@ -163,7 +158,6 @@ class Waardes
             $stmt->bindParam(":looppm", $this->loodppm);
             $stmt->bindParam(":zinppm", $this->zinkppm);
             $stmt->execute();
-
         } catch (PDOException $e) {
             echo "er is iets misgegaan met het maken van het product!" . " " . $e->getMessage();
         }
@@ -227,11 +221,9 @@ class Waardes
                 $this->lat = $result['latitude'];
                 $this->lng = $result['longitude'];
             }
-
         } catch (PDOException $e) {
             echo "Database-error: " . $e->getMessage();
         }
-
     }
 
     /**
@@ -638,21 +630,21 @@ class Waardes
      */
     public function setZinkPpm($zinkppm)
     {
-            $this->zinkppm = htmlentities($zinkppm);
+        $this->zinkppm = htmlentities($zinkppm);
     }
     /**
      * @param int $zink_warning
      */
     public function setZinkWarning($zink_warning)
     {
-            $this->zink_warning = htmlentities($zink_warning);
+        $this->zink_warning = htmlentities($zink_warning);
     }
     /**
      * @param int $zink_intervene
      */
     public function setZinkIntervene($zink_intervene)
     {
-            $this->zink_intervene = htmlentities($zink_intervene);
+        $this->zink_intervene = htmlentities($zink_intervene);
     }
 
     /**

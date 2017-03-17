@@ -5,7 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
 include_once "adminHeader.php";
 ?>
     <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
             <div class="card-header">
                 Scanned values (PPM)
@@ -22,88 +22,63 @@ include_once "adminHeader.php";
 
                         class Soil extends StandaloneDashboard
                         {
-
                             public function buildDashboard()
                             {
                                 global $scan;
 
-                                if ($scan->getLoodPpm() > 50)
-                                {
+                                if ($scan->getLoodPpm() > $scan->getLoodIntervene()) {
                                     $loodkleur = array("seriesColor" => "#E74C3C");
+                                } else {
+                                    if ($scan->getLoodPpm() > $scan->getLoodWarning()) {
+                                        $loodkleur = array("seriesColor" => "#FFC153");
+                                    } else {
+                                        $loodkleur = array("seriesColor" => "#29c75f");
+                                    }
                                 }
-                                else
-                                {
-                                    if ($scan->getLoodPpm() > 30)
-                                        {
-                                            $loodkleur = array("seriesColor" => "#FFC153");
-                                        }
-                                        else
-                                        {
-                                            $loodkleur = array("seriesColor" => "#29c75f");
-                                        }
-                                }
-                                if ($scan->getKoperPpm() > 50)
-                                {
+                                if ($scan->getKoperPpm() > $scan->getKoperIntervene()) {
                                     $koperkleur = array("seriesColor" => "#E74C3C");
+                                } else {
+                                    if ($scan->getKoperPpm() > $scan->getKoperWarning()) {
+                                        $koperkleur = array("seriesColor" => "#FFC153");
+                                    } else {
+                                        $koperkleur = array("seriesColor" => "#29c75f");
+                                    }
                                 }
-                                else
-                                {
-                                        if ($scan->getKoperPpm() > 30)
-                                        {
-                                            $koperkleur = array("seriesColor" => "#FFC153");
-                                        }
-                                        else
-                                        {
-                                            $koperkleur = array("seriesColor" => "#29c75f");
-                                        }
-                                }
-                                if ($scan->getZinkPpm() > 50)
-                                {
+                                if ($scan->getZinkPpm() > $scan->getZinkIntervene()) {
                                     $zinkkleur = array("seriesColor" => "#E74C3C");
+                                } else {
+                                    if ($scan->getZinkPpm() > $scan->getZinkWarning()) {
+                                        $zinkkleur = array("seriesColor" => "#FFC153");
+                                    } else {
+                                        $zinkkleur = array("seriesColor" => "#29c75f");
+                                    }
                                 }
-                                else
-                                {
-                                        if ($scan->getZinkPpm() > 30) {
-                                            $zinkkleur = array("seriesColor" => "#FFC153");
-                                        } else {
-                                            $zinkkleur = array("seriesColor" => "#29c75f");
-                                        }
-                                }
-                                if ($scan->getKwikPpm() > 50)
-                                {
+                                if ($scan->getKwikPpm() > $scan->getKwikIntervene()) {
                                     $kwikkleur = array("seriesColor" => "#E74C3C");
+                                } else {
+                                    if ($scan->getKwikPpm() > $scan->getKwikWarning()) {
+                                        $kwikkleur = array("seriesColor" => "#FFC153");
+                                    } else {
+                                        $kwikkleur = array("seriesColor" => "#29c75f");
+                                    }
                                 }
-                                else
-                                {
-                                        if ($scan->getKwikPpm() > 30) {
-                                            $kwikkleur = array("seriesColor" => "#FFC153");
-                                        } else {
-                                            $kwikkleur = array("seriesColor" => "#29c75f");
-                                        }
-                                }
-                                if ($scan->getKobaltPpm() > 50)
-                                {
+                                if ($scan->getKobaltPpm() > $scan->getKobaltIntervene()) {
                                     $arseenkleur = array("seriesColor" => "#E74C3C");
+                                } else {
+                                    if ($scan->getKobaltPpm() > $scan->getKobaltWarning()) {
+                                        $arseenkleur = array("seriesColor" => "#FFC153");
+                                    } else {
+                                        $arseenkleur = array("seriesColor" => "#29c75f");
+                                    }
                                 }
-                                else
-                                {
-                                        if ($scan->getKobaltPpm() > 30) {
-                                            $arseenkleur = array("seriesColor" => "#FFC153");
-                                        } else {
-                                            $arseenkleur = array("seriesColor" => "#29c75f");
-                                        }
-                                }
-                                if ($scan->getCadmiumPpm() > 50)
-                                {
+                                if ($scan->getCadmiumPpm() > $scan->getCadmiumIntervene()) {
                                     $cadmiumkleur = array("seriesColor" => "#E74C3C");
-                                }
-                                else
-                                {
-                                        if ($scan->getCadmiumPpm() > 30) {
-                                            $cadmiumkleur = array("seriesColor" => "#FFC153");
-                                        } else {
-                                            $cadmiumkleur = array("seriesColor" => "#29c75f");
-                                        }
+                                } else {
+                                    if ($scan->getCadmiumPpm() > $scan->getCadmiumWarning()) {
+                                        $cadmiumkleur = array("seriesColor" => "#FFC153");
+                                    } else {
+                                        $cadmiumkleur = array("seriesColor" => "#29c75f");
+                                    }
                                 }
 
                                 $chart = new ChartComponent("sales_chart");
@@ -166,7 +141,7 @@ include_once "adminHeader.php";
                 </div>
             </div>
         </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
             <div class="card-header">
                 Location
@@ -191,61 +166,69 @@ include_once "adminHeader.php";
                                     map: map
                                 });
                             }
-                        </script>
+                          </script>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-        <div class="card">
+    <div class="row">
+      <div class="card-body">
+        <div class="col-md-6">
+          <?php include_once "result_graph_modal.php";?>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="card">
             <div class="card-header">
                 Toegestane waardes
             </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-12">
-                            <table class="table table-striped table-bordered table-hover">
-                                <thead>
-                                <tr>
-                                    <th>Stof</th>
-                                    <th>Toegestane waarde (PPM)</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>Lood</td>
-                                    <td>50</td>
-                                </tr>
-                                <tr>
-                                    <td>Kwik</td>
-                                    <td>50</td>
-                                </tr>
-                                <tr>
-                                    <td>Arseen</td>
-                                    <td>50</td>
-                                </tr>
-                                <tr>
-                                    <td>Cadmium</td>
-                                    <td>50</td>
-                                </tr>
-                                <tr>
-                                    <td>Koper</td>
-                                    <td>50</td>
-                                </tr>
-                                <tr>
-                                    <td>Zink</td>
-                                    <td>50</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+              <div class="card-body">
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="col-md-12">
+                              <table class="table table-striped table-bordered table-hover">
+                                  <thead>
+                                  <tr>
+                                      <th>Stof</th>
+                                      <th>Toegestane waarde (PPM)</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                  <tr>
+                                      <td>Lood</td>
+                                      <td>50</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Kwik</td>
+                                      <td>50</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Arseen</td>
+                                      <td>50</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Cadmium</td>
+                                      <td>50</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Koper</td>
+                                      <td>50</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Zink</td>
+                                      <td>50</td>
+                                  </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
         </div>
+      </div>
     </div>
+
 
 
 <?php

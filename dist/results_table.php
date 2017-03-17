@@ -56,6 +56,7 @@ include_once "footer.php";
     $( document ).ready(function() {
         $('.scan').on( "click", function() {
         id = $(this).data('scanid');
+        alert(id);
         var postData = {
         'id': id
         };

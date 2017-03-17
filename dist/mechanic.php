@@ -1,6 +1,6 @@
 <?php
 include_once "normalHeader.php";
-include_once "../classes/lastscan.php";
+include_once "../classes/Waardes.php";
 
 // FINAL QUERY to get the last scan of a particular scanning device !!!
 // $stmt = $DB_con->prepare("SELECT * FROM waardes where scan_naam = '$scan_naam' ORDER BY scan_id DESC");
@@ -14,12 +14,12 @@ $result = $stmt->fetch();
 // check to compare the results of the scan against the intervention and warning values
 // First if statements checks if the scan results are above the intervention values.
 if (
-  $result[lood_ppm] > $result[lood_intervene] ||
-  $result[koper_ppm] > $result[koper_intervene] ||
-  $result[zink_ppm] > $result[zink_intervene] ||
-  $result[kwik_ppm] > $result[kwik_intervene] ||
-  $result[cadmium_ppm] > $result[cadmium_intervene] ||
-  $result[kobalt_ppm] > $result[kobalt_intervene]) {
+  $result['lood_ppm'] > $result['lood_intervene'] ||
+  $result['koper_ppm'] > $result['koper_intervene'] ||
+  $result['zink_ppm'] > $result['zink_intervene'] ||
+  $result['kwik_ppm'] > $result['kwik_intervene'] ||
+  $result['cadmium_ppm'] > $result['cadmium_intervene'] ||
+  $result['kobalt_ppm'] > $result['kobalt_intervene']) {
 
   $color_modal = "danger";
   $text_modal = "Bodem is zwaar verontreinigd, er mag hier niet gegraven worden!";
@@ -28,12 +28,12 @@ if (
 } else {
   // second if checks if the scan resuslts are in between the warning and intervention values.
   if (
-    $result[lood_ppm] > $result[lood_warning] ||
-    $result[koper_ppm] > $result[koper_warning] ||
-    $result[zink_ppm] > $result[zink_warning] ||
-    $result[kwik_ppm] > $result[kwik_warning] ||
-    $result[cadmium_ppm] > $result[cadmium_warning] ||
-    $result[kobalt_ppm] > $result[kobalt_warning]) {
+    $result['lood_ppm'] > $result['lood_warning'] ||
+    $result['koper_ppm'] > $result['koper_warning'] ||
+    $result['zink_ppm'] > $result['zink_warning'] ||
+    $result['kwik_ppm'] > $result['kwik_warning'] ||
+    $result['cadmium_ppm'] > $result['cadmium_warning'] ||
+    $result['kobalt_ppm'] > $result['kobalt_warning']) {
 
       $color_modal = "warning";
       $text_modal = "Bodem enigsinds vervuild. Trek beschermende kleding aan.";
@@ -90,7 +90,7 @@ $time = $splitTimeStamp[1];
               <h4><i class="fa fa-wifi" aria-hidden="true" style="padding-right: 7px"></i></h4>
             </div>
             <div class="col-md-2">
-              <h4>Scan ID: <?php echo $result[scan_id]; ?></h4>
+              <h4>Scan ID: <?php echo $result['scan_id']; ?></h4>
             </div>
             <!-- end of scan id -->
             <!-- scan date -->
@@ -109,7 +109,7 @@ $time = $splitTimeStamp[1];
               <h4 style="padding-left: 6px;"><i class="fa fa-map-marker" aria-hidden="true"></i></h4>
             </div>
             <div class="col-md-2">
-              <h4><?php echo $result[naam_scan]; ?></h4>
+              <h4><?php echo $result['naam_scan']; ?></h4>
             </div>
             <!-- end of scan location -->
             <!-- scan timestamp -->

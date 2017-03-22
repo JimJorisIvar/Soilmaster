@@ -35,7 +35,7 @@ if (
       $icon_modal = "fa fa-exclamation-triangle";
   } else {
       // if the values are not above the interventon values nor in between the warning and intervention values, execute below
-    $color_modal = "success";
+      $color_modal = "success";
       $text_modal = "De bodem in niet verontreinigd. Graven toegestaan.";
       $take_action_modal = " Graven toegestaan";
       $icon_modal = "fa fa-thumbs-o-up";
@@ -121,12 +121,12 @@ $time = $splitTimeStamp[1];
 
       <!-- modal footer -->
       <div class="modal-footer">
-        <div class="checkbox" style="text-align: left">
+        <div class="checkbox checkbox-<?php echo $color_modal;?>" style="text-align: left">
             <input type="checkbox" id="checkbox1" onchange="document.getElementById('btnClose').disabled = !this.checked;" />
             <label for="checkbox1">
                 Hiermee bevestig ik de melding gelezen te hebben.
             </label>
-            <button id="btnClose" type="button" style="float: right;" class="btn btn-sm btn-success" data-dismiss="modal" disabled="btnClose">Sluiten</button>
+            <button id="btnClose" type="button" style="float: right;" class="btn btn-<?php echo $color_modal;?>" data-dismiss="modal" disabled="btnClose">Sluiten</button>
         </div>
       </div>
       <!-- end of modal footer -->

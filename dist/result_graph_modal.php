@@ -123,12 +123,12 @@ $time = $splitTimeStamp[1];
 
       <!-- modal footer -->
       <div class="modal-footer">
-        <div class="checkbox" style="text-align: left">
+        <div class="checkbox checkbox<?php echo $color_modal; ?>" style="text-align: left">
             <!-- <input type="checkbox" id="checkbox1" onchange="document.getElementById('ButtonClose').disabled = !this.checked;" />
             <label for="checkbox1">
                 Hiermee bevestig ik de melding gelezen te hebben.
             </label> -->
-            <button id="ButtonClose" type="button" style="float: right;" class="btn btn-sm btn-success" data-dismiss="modal" >Sluiten</button>
+            <button id="ButtonClose" type="button" style="float: right;" class="btn btn-<?php echo $color_modal; ?>" data-dismiss="modal" >Sluiten</button>
         </div>
       </div>
       <!-- end of modal footer -->

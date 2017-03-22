@@ -1,5 +1,5 @@
 <?php
-include_once "normalHeader.php";
+include_once "adminHeader.php";
 include_once "../classes/Waardes.php";
 
 // FINAL QUERY to get the last scan of a particular scanning device !!!

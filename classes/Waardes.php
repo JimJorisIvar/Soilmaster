@@ -113,8 +113,6 @@ class Waardes
     /**
      * @var int
      */
-
-
     private $lastinsertedid;
     /**
      * @param string
@@ -131,6 +129,7 @@ class Waardes
      */
     private $waardes_info = array();
 
+    // Connection with the database.
     /**
      * @param $dbconnection
      * @param string $productID
@@ -147,6 +146,7 @@ class Waardes
     /**
      *
      */
+    // Create function: Function to insert data into the database table 'Waardes'.
     public function create()
     {
         try {
@@ -184,6 +184,7 @@ class Waardes
     /**
      * @param $id
      */
+    // read function: Function to get data out of the database table 'Waardes'.
     public function read($id)
     {
         if (empty($id)) {

@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ERROR);
 include_once "../classes/Waardes.php";
 include_once "connection.php";
 ?>

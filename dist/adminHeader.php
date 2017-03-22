@@ -26,7 +26,7 @@ include_once "connection.php";
         width: 100%;
     }
     .map_dashboard {
-        height: 300px;
+        height: 500px;
         width: 100%;
     }
     .map_result {

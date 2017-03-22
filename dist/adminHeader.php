@@ -28,7 +28,7 @@ $first_part = $components[1];
 </head>
 <style>
     .map_map {
-        height: 550px;
+        height: 680px;
         width: 100%;
     }
     .map_dashboard {
@@ -44,7 +44,7 @@ $first_part = $components[1];
 <div class="app app-default">
     <aside class="app-sidebar" id="sidebar">
         <div class="sidebar-header">
-            <a class="sidebar-brand" href="#"><span class="highlight">Soilmaster</span> Admin</a>
+            <a class="sidebar-brand" href="#"><span class="highlight">Soilmaster</span> Mechanic</a>
             <button type="button" class="sidebar-toggle">
                 <i class="fa fa-times"></i>
             </button>

@@ -39,7 +39,7 @@ include_once "connection.php";
 <div class="app app-default">
     <aside class="app-sidebar" id="sidebar">
         <div class="sidebar-header">
-            <a class="sidebar-brand" href="#"><span class="highlight">Soilmaster</span> Mechanic</a>
+            <a class="sidebar-brand" href="index.php"><span class="highlight">Soilmaster</span> Monteur</a>
             <button type="button" class="sidebar-toggle">
                 <i class="fa fa-times"></i>
             </button>
@@ -59,7 +59,7 @@ include_once "connection.php";
                         <div class="icon">
                             <i class="fa fa-map" aria-hidden="true"></i>
                         </div>
-                        <div class="title">Map</div>
+                        <div class="title">Kaart</div>
                     </a>
                 </li>
                 <li class="active">
@@ -67,39 +67,10 @@ include_once "connection.php";
                         <div class="icon">
                             <i class="fa fa-bar-chart" aria-hidden="true"></i>
                         </div>
-                        <div class="title">Results</div>
+                        <div class="title">Resultaten</div>
                     </a>
                 </li>
-                <li class="active">
-                    <a href="input">
-                        <div class="icon">
-                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                        </div>
-                        <div class="title">Input</div>
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <div class="icon">
-                            <i class="fa fa-file-o" aria-hidden="true"></i>
-                        </div>
-                        <div class="title">Pages</div>
-                    </a>
-                    <div class="dropdown-menu">
-                        <ul>
-                            <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> mechanic</li>
-                            <li><a href="./pages/form.html">Form</a></li>
-                            <li><a href="./pages/profile.html">Profile</a></li>
-                            <li><a href="./pages/search.html">Search</a></li>
-                            <li class="line"></li>
-                            <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> Landing</li>
-                            <!-- <li><a href="./pages/landing.html">Landing</a></li> -->
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="./pages/register.html">Register</a></li>
-                            <!-- <li><a href="./pages/404.html">404</a></li> -->
-                        </ul>
-                    </div>
-                </li>
+
             </ul>
         </div>
 
@@ -136,7 +107,7 @@ include_once "connection.php";
                     <ul class="nav navbar-nav navbar-left">
                         <li class="navbar-title">Dashboard</li>
                         <li class="navbar-search hidden-sm">
-                            <input id="search" type="text" placeholder="Search..">
+                            <input id="search" type="text" placeholder="Zoeken...">
                             <button class="btn-search"><i class="fa fa-search"></i></button>
                         </li>
                     </ul>

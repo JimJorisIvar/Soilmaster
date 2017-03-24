@@ -50,7 +50,7 @@ include_once "adminHeader.php";
                                     </div>
                                 </div>
                                 <textarea placeholder="Comments" name="name" rows="3" class="form-control"></textarea>
-                                <div class="checkbox">
+                                <div class="checkbox checkbox-success">
                                     <input type="checkbox" id="checkbox1" onchange="document.getElementById('send-button').disabled = !this.checked;">
                                     <label for="checkbox1">
                                         I agree with the terms and conditions.

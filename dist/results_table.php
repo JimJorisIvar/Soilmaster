@@ -1,5 +1,18 @@
 <?php
-include_once "adminHeader.php";
+require_once "../classes/Login.php";
+$login = new Login();
+if ($login->checkUserLevel() == true) {
+    // the user is logged in. you can do whatever you want here.
+    // for demonstration purposes, we simply show the "you are logged in" view.
+    include("adminHeader.php");
+
+} elseif ($login->checkUserLevel() == false) {
+    include("normalHeader.php");
+
+} else {
+    // the user is not logged in. you can do whatever you want here.
+    // for demonstration purposes, we simply show the "you are not logged in" view.
+    include("login.php"); }
 include_once "../classes/ListOfScans.php";
 ?>
 <div class="row">
@@ -13,10 +26,10 @@ include_once "../classes/ListOfScans.php";
                     <thead>
                     <tr>
                         <th>Scan ID</th>
-                        <th>Date</th>
-                        <th>Location</th>
-                        <th>Scan name</th>
-                        <th>View</th>
+                        <th>Datum</th>
+                        <th>Locatie</th>
+                        <th>Scan naam</th>
+                        <th>Inzien</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -39,7 +52,7 @@ include_once "../classes/ListOfScans.php";
                             <td>' . $location . '</td>
 
                             <td>' . $scan->getScanName() . '</td>
-                            <td><button data-scanid="' . $scan->getScanid() . '" name="var_id[]" type="button" class="scan btn btn-success btn-xs">Result</button></td>
+                            <td><button data-scanid="' . $scan->getScanid() . '" name="var_id[]" type="button" class="scan btn btn-success btn-xs">Resultaat</button></td>
                         </tr>';}?>
                     </tbody>
                 </table>

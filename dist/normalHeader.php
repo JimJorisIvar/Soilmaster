@@ -44,7 +44,7 @@ $first_part = $components[1];
 <div class="app app-default">
     <aside class="app-sidebar" id="sidebar">
         <div class="sidebar-header">
-            <a class="sidebar-brand" href="#"><span class="highlight">Soilmaster</span> Monteur</a>
+            <a class="sidebar-brand" href="index.php"><span class="highlight">Soilmaster</span> Monteur</a>
             <button type="button" class="sidebar-toggle">
                 <i class="fa fa-times"></i>
             </button>
@@ -111,7 +111,7 @@ $first_part = $components[1];
                     <ul class="nav navbar-nav navbar-left">
                         <li class="navbar-title">Dashboard</li>
                         <li class="navbar-search hidden-sm">
-                            <input id="search" type="text" placeholder="Search..">
+                            <input id="search" type="text" placeholder="Zoeken...">
                             <button class="btn-search"><i class="fa fa-search"></i></button>
                         </li>
                     </ul>

@@ -1,14 +1,28 @@
 <?php
+require_once "../classes/Login.php";
+$login = new Login();
+if ($login->checkUserLevel() == true) {
+    // the user is logged in. you can do whatever you want here.
+    // for demonstration purposes, we simply show the "you are logged in" view.
+    include("adminHeader.php");
+
+} elseif ($login->checkUserLevel() == false) {
+    include("normalHeader.php");
+
+} else {
+    // the user is not logged in. you can do whatever you want here.
+    // for demonstration purposes, we simply show the "you are not logged in" view.
+    include("login.php"); }
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-include_once "adminHeader.php";
+
 ?>
     <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
             <div class="card-header">
-                Scanned values (PPM)
+                Gescande waardes (mg/kg) droge stof:
             </div>
             <div class="card-body">
                 <div class="row">
@@ -119,7 +133,7 @@ include_once "adminHeader.php";
                                 <div class="card-body">
                                     <i class="icon fa fa-tint fa-4x"></i>
                                     <div class="content">
-                                        <div class="title">Moisture</div>
+                                        <div class="title">Vochtigheid</div>
                                         <div class="value"></span><?php echo $scan->getMoisture(); ?> %</div>
                                     </div>
                                 </div>
@@ -131,7 +145,7 @@ include_once "adminHeader.php";
                                 <div class="card-body">
                                     <i class="icon fa fa-thermometer-half fa-4x"></i>
                                     <div class="content">
-                                        <div class="title">Temperature</div>
+                                        <div class="title">Temperatuur</div>
                                         <div class="value"></span><?php echo $scan->getTemperature(); ?> ℃</div>
                                     </div>
                                 </div>
@@ -144,7 +158,7 @@ include_once "adminHeader.php";
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
             <div class="card-header">
-                Location
+                Locatie
             </div>
             <div class="card-body">
                 <div class="row">

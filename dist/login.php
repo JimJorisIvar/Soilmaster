@@ -57,18 +57,18 @@ if (isset($login)) {
               <span class="input-group-addon" id="basic-addon1">
                 <i class="fa fa-user" aria-hidden="true"></i></span>
                                 <input id="login_input_username" name="user_name" type="text"
-                                       class="form-control login_input" placeholder="Username"
+                                       class="form-control login_input" placeholder="gebruikersnaam"
                                        aria-describedby="basic-addon1" required>
                             </div>
                             <div class="input-group">
               <span class="input-group-addon" id="basic-addon2">
                 <i class="fa fa-key" aria-hidden="true"></i></span>
                                 <input id="login_input_password" name="user_password" type="password"
-                                       class="form-control login_input" placeholder="Password"
+                                       class="form-control login_input" placeholder="wachtwoord"
                                        aria-describedby="basic-addon2" autocomplete="off" required>
                             </div>
                             <div class="text-center">
-                                <input name="login" type="submit" class="btn btn-success btn-submit" value="Log in">
+                                <input name="login" type="submit" class="btn btn-success btn-submit" value="Login">
                             </div>
                         </form>
 

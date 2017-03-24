@@ -1,5 +1,16 @@
 <?php
-include_once "adminHeader.php";
+if ($login->isUserLoggedIn() == true && $login->checkUserLevel() == true) {
+    // the user is logged in. you can do whatever you want here.
+    // for demonstration purposes, we simply show the "you are logged in" view.
+    include("adminHeader.php");
+
+} elseif ($login->isUserLoggedIn() == true && $login->checkUserLevel() == false) {
+    include("normalHeader.php");
+
+} else {
+    // the user is not logged in. you can do whatever you want here.
+    // for demonstration purposes, we simply show the "you are not logged in" view.
+    include("login.php"); }
 ?>
 
 <div class="row">
@@ -21,7 +32,7 @@ include_once "adminHeader.php";
     <i class="icon fa fa-wifi fa-4x"></i>
     <div class="content">
     <!--Get most recent scan_id from the database from this day-->
-      <div class="title">Scans today</div>
+      <div class="title">Scans vandaag</div>
       <div class="value"><span class="sign"></span>6</div>
     </div>
   </div>
@@ -34,7 +45,7 @@ include_once "adminHeader.php";
     <i class="icon fa fa-wifi fa-4x"></i>
     <div class="content">
         <!--Get most recent scan_id from the database in total-->
-      <div class="title">Total scans</div>
+      <div class="title">Totaal aantal scans</div>
       <div class="value"><span class="sign"></span>13</div>
     </div>
   </div>
@@ -47,7 +58,7 @@ include_once "adminHeader.php";
     <i class="icon fa fa-user-plus fa-4x"></i>
     <div class="content">
 <!--        Get the number of total scanning devices-->
-      <div class="title">Scanning Mechanics</div>
+      <div class="title">Monteurs</div>
       <div class="value"><span class="sign"></span>32</div>
     </div>
   </div>

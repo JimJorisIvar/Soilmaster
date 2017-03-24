@@ -64,7 +64,7 @@ $first_part = $components[1];
                         <div class="icon">
                             <i class="fa fa-map" aria-hidden="true"></i>
                         </div>
-                        <div class="title">Map</div>
+                        <div class="title">Kaart</div>
                     </a>
                 </li>
                 <li class="<?php if ($first_part=="results_table" || $first_part=="result_graph") {echo "active"; } else  {echo "noactive";}?>">
@@ -72,7 +72,7 @@ $first_part = $components[1];
                         <div class="icon">
                             <i class="fa fa-bar-chart" aria-hidden="true"></i>
                         </div>
-                        <div class="title">Results</div>
+                        <div class="title">Resultaten</div>
                     </a>
                 </li>
                 <li class="<?php if ($first_part=="input") {echo "active"; } else  {echo "noactive";}?>">
@@ -80,7 +80,7 @@ $first_part = $components[1];
                         <div class="icon">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </div>
-                        <div class="title">Input</div>
+                        <div class="title">Invoer</div>
                     </a>
                 </li>
 <!--                <li class="dropdown">-->
@@ -130,7 +130,7 @@ $first_part = $components[1];
                             </button>
                         </li>
                         <li class="logo">
-                            <a class="navbar-brand" href="#"><span class="highlight">Soilmaster</span> Admin</a>
+                            <a class="navbar-brand" href="#"><span class="highlight">Soilmaster</span> Expert</a>
                         </li>
                         <li>
                             <button type="button" class="navbar-toggle">
@@ -141,7 +141,7 @@ $first_part = $components[1];
                     <ul class="nav navbar-nav navbar-left">
                         <li class="navbar-title">Dashboard</li>
                         <li class="navbar-search hidden-sm">
-                            <input id="search" type="text" placeholder="Search..">
+                            <input id="search" type="text" placeholder="Zoeken...">
                             <button class="btn-search"><i class="fa fa-search"></i></button>
                         </li>
                     </ul>

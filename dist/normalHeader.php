@@ -2,6 +2,11 @@
 error_reporting(E_ERROR);
 include_once "../classes/Waardes.php";
 include_once "connection.php";
+
+$directoryURI = $_SERVER['REQUEST_URI'];
+$path = parse_url($directoryURI, PHP_URL_PATH);
+$components = explode('/dist/', $path);
+$first_part = $components[1];
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +18,7 @@ include_once "connection.php";
 
     <link rel="stylesheet" type="text/css" href="./assets/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/flat-admin.css">
-
+    <script src="https://cdn.klokantech.com/maptilerlayer/v1/index.js"></script
     <!-- Theme -->
     <link rel="stylesheet" type="text/css" href="./assets/css/theme/blue-sky.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/theme/blue.css">
@@ -23,7 +28,7 @@ include_once "connection.php";
 </head>
 <style>
     .map_map {
-        height: 550px;
+        height: 680px;
         width: 100%;
     }
     .map_dashboard {
@@ -46,7 +51,7 @@ include_once "connection.php";
         </div>
         <div class="sidebar-menu">
             <ul class="sidebar-nav">
-                <li class="active">
+                <li class="<?php if ($first_part=="index" || $first_part=="index.php") {echo "active"; } else  {echo "noactive";}?>">
                     <a href="index.php">
                         <div class="icon">
                             <i class="fa fa-tasks" aria-hidden="true"></i>
@@ -54,7 +59,7 @@ include_once "connection.php";
                         <div class="title">Dashboard</div>
                     </a>
                 </li>
-                <li class="active">
+                <li class="<?php if ($first_part=="map") {echo "active"; } else  {echo "noactive";}?>">
                     <a href="map">
                         <div class="icon">
                             <i class="fa fa-map" aria-hidden="true"></i>
@@ -62,7 +67,7 @@ include_once "connection.php";
                         <div class="title">Kaart</div>
                     </a>
                 </li>
-                <li class="active">
+                <li class="<?php if ($first_part=="results_table" || $first_part=="result_graph") {echo "active"; } else  {echo "noactive";}?>">
                     <a href="results_table">
                         <div class="icon">
                             <i class="fa fa-bar-chart" aria-hidden="true"></i>
@@ -70,7 +75,6 @@ include_once "connection.php";
                         <div class="title">Resultaten</div>
                     </a>
                 </li>
-
             </ul>
         </div>
 

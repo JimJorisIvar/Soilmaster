@@ -2,6 +2,11 @@
 error_reporting(E_ERROR);
 include_once "../classes/Waardes.php";
 include_once "connection.php";
+
+$directoryURI = $_SERVER['REQUEST_URI'];
+$path = parse_url($directoryURI, PHP_URL_PATH);
+$components = explode('/dist/', $path);
+$first_part = $components[1];
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +18,7 @@ include_once "connection.php";
 
     <link rel="stylesheet" type="text/css" href="./assets/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/flat-admin.css">
-
+    <script src="https://cdn.klokantech.com/maptilerlayer/v1/index.js"></script
     <!-- Theme -->
     <link rel="stylesheet" type="text/css" href="./assets/css/theme/blue-sky.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/theme/blue.css">
@@ -23,7 +28,7 @@ include_once "connection.php";
 </head>
 <style>
     .map_map {
-        height: 550px;
+        height: 680px;
         width: 100%;
     }
     .map_dashboard {
@@ -39,14 +44,14 @@ include_once "connection.php";
 <div class="app app-default">
     <aside class="app-sidebar" id="sidebar">
         <div class="sidebar-header">
-            <a class="sidebar-brand" href="#"><span class="highlight">Soilmaster</span> Mechanic</a>
+            <a class="sidebar-brand" href="#"><span class="highlight">Soilmaster</span> Monteur</a>
             <button type="button" class="sidebar-toggle">
                 <i class="fa fa-times"></i>
             </button>
         </div>
         <div class="sidebar-menu">
             <ul class="sidebar-nav">
-                <li class="active">
+                <li class="<?php if ($first_part=="index" || $first_part=="index.php") {echo "active"; } else  {echo "noactive";}?>">
                     <a href="index.php">
                         <div class="icon">
                             <i class="fa fa-tasks" aria-hidden="true"></i>
@@ -54,51 +59,21 @@ include_once "connection.php";
                         <div class="title">Dashboard</div>
                     </a>
                 </li>
-                <li class="active">
+                <li class="<?php if ($first_part=="map") {echo "active"; } else  {echo "noactive";}?>">
                     <a href="map">
                         <div class="icon">
                             <i class="fa fa-map" aria-hidden="true"></i>
                         </div>
-                        <div class="title">Map</div>
+                        <div class="title">Kaart</div>
                     </a>
                 </li>
-                <li class="active">
+                <li class="<?php if ($first_part=="results_table" || $first_part=="result_graph") {echo "active"; } else  {echo "noactive";}?>">
                     <a href="results_table">
                         <div class="icon">
                             <i class="fa fa-bar-chart" aria-hidden="true"></i>
                         </div>
-                        <div class="title">Results</div>
+                        <div class="title">Resultaten</div>
                     </a>
-                </li>
-                <li class="active">
-                    <a href="input">
-                        <div class="icon">
-                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                        </div>
-                        <div class="title">Input</div>
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <div class="icon">
-                            <i class="fa fa-file-o" aria-hidden="true"></i>
-                        </div>
-                        <div class="title">Pages</div>
-                    </a>
-                    <div class="dropdown-menu">
-                        <ul>
-                            <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> mechanic</li>
-                            <li><a href="./pages/form.html">Form</a></li>
-                            <li><a href="./pages/profile.html">Profile</a></li>
-                            <li><a href="./pages/search.html">Search</a></li>
-                            <li class="line"></li>
-                            <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> Landing</li>
-                            <!-- <li><a href="./pages/landing.html">Landing</a></li> -->
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="./pages/register.html">Register</a></li>
-                            <!-- <li><a href="./pages/404.html">404</a></li> -->
-                        </ul>
-                    </div>
                 </li>
             </ul>
         </div>

@@ -12,6 +12,7 @@ $first_part = $components[1];
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="icon" type="image/png" href="mechanicfavicon.png" />
     <title>Soilmaster</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">

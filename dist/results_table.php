@@ -67,6 +67,7 @@ include_once "footer.php";
 
 <script>
     $( document ).ready(function() {
+        $('div.dataTables_filter input').attr('placeholder', 'Zoeken...');
         $('.scan').on( "click", function() {
         id = $(this).data('scanid');
         var postData = {

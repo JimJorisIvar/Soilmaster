@@ -12,7 +12,7 @@ $first_part = $components[1];
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Soilmaster</title>
+    <title>Mechanic alert</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -44,7 +44,7 @@ $first_part = $components[1];
 <div class="app app-default">
     <aside class="app-sidebar" id="sidebar">
         <div class="sidebar-header">
-            <a class="sidebar-brand" href="index.php"><span class="highlight">Soilmaster</span> Monteur</a>
+            <a class="sidebar-brand" href="index.php"><span class="highlight">Mechanic</span> alert</a>
             <button type="button" class="sidebar-toggle">
                 <i class="fa fa-times"></i>
             </button>
@@ -53,14 +53,6 @@ $first_part = $components[1];
             <ul class="sidebar-nav">
                 <li class="<?php if ($first_part=="index" || $first_part=="index.php") {echo "active"; } else  {echo "noactive";}?>">
                     <a href="index.php">
-                        <div class="icon">
-                            <i class="fa fa-tasks" aria-hidden="true"></i>
-                        </div>
-                        <div class="title">Dashboard</div>
-                    </a>
-                </li>
-                <li class="<?php if ($first_part=="map") {echo "active"; } else  {echo "noactive";}?>">
-                    <a href="map">
                         <div class="icon">
                             <i class="fa fa-map" aria-hidden="true"></i>
                         </div>

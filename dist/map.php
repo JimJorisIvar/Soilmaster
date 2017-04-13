@@ -7,7 +7,6 @@ if ($login->checkUserLevel() == true) {
     include("adminHeader.php");
 
 } elseif ($login->checkUserLevel() == false) {
-    include("normalHeader.php");
 
 } else {
     // the user is not logged in. you can do whatever you want here.

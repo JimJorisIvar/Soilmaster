@@ -13,7 +13,7 @@ $first_part = $components[1];
 <html>
 <head>
     <link rel="icon" type="image/png" href="mechanicfavicon.png" />
-    <title>Soilmaster</title>
+    <title>Mechanic alert</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -45,7 +45,7 @@ $first_part = $components[1];
 <div class="app app-default">
     <aside class="app-sidebar" id="sidebar">
         <div class="sidebar-header">
-            <a class="sidebar-brand" href="#"><span class="highlight">Soilmaster</span> Mechanic</a>
+            <a class="sidebar-brand" href="#"><span class="highlight">Mechanic</span> alert</a>
             <button type="button" class="sidebar-toggle">
                 <i class="fa fa-times"></i>
             </button>

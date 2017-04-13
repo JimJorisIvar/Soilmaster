@@ -12,5 +12,5 @@ if ($login->isUserLoggedIn() == true && $login->checkUserLevel() == true) {
     // for demonstration purposes, we simply show the "you are not logged in" view.
     include("login.php"); }
 
-include_once "mechanic_modal.php";
+include_once "map.php";
 include_once ("footer.php");
